@@ -1,0 +1,86 @@
+.savedInformation {
+  width: 100%;
+}
+
+.savedInformation > .headlineInformation > h2 {
+  text-align: center;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ffffff77;
+}
+
+.savedInformation > .information {
+  display: flex;
+  padding: 0.5rem 0.3rem;
+}
+
+.savedInformation > .information > p{
+  width: 120px;
+}
+
+.savedInformation > .information > span {
+  color: #fec400;
+  font-size: 1.2rem;
+}
+
+.lastVisit {
+  border: 1px solid pink;
+  padding: 1rem;
+}
+
+.visitHedline {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.visitHedline > h3 > span {
+  color: #fec400;
+}
+
+.table {
+  width: 100%;
+  display: flex;
+}
+
+.table > .visit {
+  flex-grow: 1;
+  flex-basis: 0;
+  border-right: 1px solid #fec400;
+  padding: 0.5rem;
+}
+
+.table > .visit > div {
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #fec400;
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+}
+
+.table > .visit > div > p{
+  width: 110px;
+}
+
+@media (max-width: 810px) {
+  .table {
+    margin: 0 auto;
+    width: 50%;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .table > .visit {
+    border-bottom: 1px solid #fec400;
+  }
+}
+
+@media (max-width: 600px) {
+  .table {
+    width: 80%;
+  }
+}
+
+@media (max-width: 420px) {
+  .table {
+    width: 100%;
+  }
+}
