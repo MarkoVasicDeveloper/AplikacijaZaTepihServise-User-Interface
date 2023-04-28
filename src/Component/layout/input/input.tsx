@@ -5,10 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { type IconDefinition } from '@fortawesome/free-solid-svg-icons'
 
 interface InputParam {
-  onChangeInput: any
-  onEnter?: any
+  onChangeInput: (data: string) => void
+  onEnter?: (() => void ) | any
   type?: string
-  name: any
+  name: string
   id: string
   required?: boolean
   footnoteTitle?: string
@@ -16,7 +16,7 @@ interface InputParam {
   icon: IconDefinition
 }
 
-export function Input ({ icon, onChangeInput, onEnter, type, name, id, required, footnoteTitle, placeholder }: InputParam): JSX.Element {
+export function InputWithValidation ({ icon, onChangeInput, onEnter, type, name, id, required, footnoteTitle, placeholder }: InputParam): JSX.Element {
   const [dirty, setDirty] = useState(false)
 
   const { validation, message, invalid } = useFormValidation(onChangeInput, name, dirty, required);
@@ -36,7 +36,7 @@ export function Input ({ icon, onChangeInput, onEnter, type, name, id, required,
               <FontAwesomeIcon icon={icon} />
             </span>
             <input
-                className={ invalid ? 'input-invalid' : 'default-input'}
+                className={ invalid ? 'input-invalid' : ''}
                 name = { name }
                 type = { type ?? 'text'}
                 onChange={(event) => { validation(event) }}
@@ -49,9 +49,12 @@ export function Input ({ icon, onChangeInput, onEnter, type, name, id, required,
                 placeholder = { placeholder }
             />
           </div>
-          <div className='message'>
-            <span className='invalid-input'>{message}</span> 
-          </div>
+          {
+            required ?
+            <div className='message'>
+              <span className='invalid'>{message}</span>
+            </div> : ''
+          }
         </div>
   )
 }

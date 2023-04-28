@@ -1,28 +1,23 @@
+@import '../../style/mixins.scss';
+
 #logIn {
   width: 100vw;
   height: 100vh;
   background-image: url("../../Img/background-log-in-mini.webp");
   background-size: cover;
   background-position: center;
-  background-color: #00000066;
-  background-blend-mode: darken;
-  padding: 5rem 1rem 1rem 1rem;
   font-family: "Montserrat";
-  box-sizing: border-box;
+  @include flex-center;
 }
 
 .form-holder {
-  max-width: 400px;
-  height: 400px;
-  margin: 0 auto;
+  width: clamp(300px, 50%, 600px);
   border-radius: 20px;
-  background-color: #000000aa;
+  background-color: #000000dd;
   padding: 1rem;
 }
 
 .form-header {
-  width: 100%;
-  height: 20%;
   color: #ffffdd;
   display: flex;
   align-items: center;
@@ -39,84 +34,12 @@
   cursor: pointer;
 }
 
-.social {
-  width: 40%;
-  height: auto;
+.relative {
   position: absolute;
   top: -70%;
-  right: 5%;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.social > a {
-  font-size: 4rem;
-}
-
-.social > a > svg {
-  color: #fff;
-}
-
-.input-one {
   width: 100%;
-  height: 10%;
-  margin-bottom: 1rem;
   display: flex;
-}
-
-.input-one > div {
-  width: 10%;
-  height: 100%;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
-  box-sizing: border-box;
-  background-color: #793ea5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  color: #ffffdd;
-}
-
-.input-one > input {
-  width: 100%;
-  height: 100%;
-  border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px;
-  padding-left: 1rem;
-  box-sizing: border-box;
-  border: none;
-}
-
-.input-two {
-  width: 100%;
-  height: 10%;
-  margin-bottom: 1rem;
-  display: flex;
-}
-
-.input-two > div {
-  width: 10%;
-  height: 100%;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
-  box-sizing: border-box;
-  background-color: #793ea5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  color: #ffffdd;
-}
-
-.input-two > input {
-  width: 100%;
-  height: 100%;
-  border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px;
-  padding-left: 1rem;
-  box-sizing: border-box;
-  border: none;
+  flex-direction: row-reverse;
 }
 
 .submit-btn {

@@ -15,9 +15,10 @@ import {
   userAuthorization,
 } from "../../misc/Function/LogInPage/UserLogIn";
 
-import "./LogIn.css";
-import { Input } from "../layout/input/input";
+import "./LogIn.scss";
+import { InputWithValidation } from "../layout/input/input";
 import { useInputText } from "../../hooks/useInputText";
+import { SocialIcon } from "../layout/socialIcon/socialIcon";
 
 export default function Login() {
   const { data, edit } = useInputText({});
@@ -61,49 +62,42 @@ export default function Login() {
   }
 
   return (
-    <div>
-      <section id="logIn">
-        <div className="form-holder">
-          <div className="form-header">
-            <FontAwesomeIcon
-              icon={faArrowLeftLong}
-              onClick={() => navigate("/")}
-            />
-            <h1>Log In</h1>
-            <div className="social">
-              <a href="facebook.com">
-                <FontAwesomeIcon icon={faFacebook} />
-              </a>
-              <a href="instagram.com">
-                <FontAwesomeIcon icon={faInstagram} />
-              </a>
-            </div>
-          </div>
-
-          <Input icon={faMailBulk} onChangeInput={edit} name={"email"} placeholder="Email" id={"email"} required />
-          <Input icon={faKey} onChangeInput={edit} name={"password"} placeholder="Password" id={"password"} required />
-
-          <div className="submit-btn">
-            <div
-              className={message === false ? "hiddenMessage" : "showMessage"}
-            >
-              <p>Mail ili lozinka nisu tacni!</p>
-            </div>
-            <button onClick={(e) => sendSubmit(e)}>Login</button>
-          </div>
-
-          <div className="form-footer">
-            <p>
-              Nemate nalog?
-              <span>
-                <Link to="/singup">Sing Up</Link>
-              </span>
-            </p>
-            <p>Zaboravili ste password?</p>
+    <section id="logIn">
+      <div className="form-holder">
+        <div className="form-header">
+          <FontAwesomeIcon
+            icon={faArrowLeftLong}
+            onClick={() => navigate("/")}
+          />
+          <h1>Log In</h1>
+          <div className="relative">
+            <SocialIcon icon={faFacebook} link={"facebook.com"} />
+            <SocialIcon icon={faInstagram} link={"instagram.com"} />
           </div>
         </div>
-        <button onClick={() => console.log(data)}>sss</button>
-      </section>
-    </div>
+
+        <InputWithValidation icon={faMailBulk} onChangeInput={edit} name={"email"} placeholder="Email" id={"email"} required />
+        <InputWithValidation icon={faKey} onChangeInput={edit} name={"password"} placeholder="Password" id={"password"} required />
+
+        <div className="submit-btn">
+          <div
+            className={message === false ? "hiddenMessage" : "showMessage"}
+          >
+            <p>Mail ili lozinka nisu tacni!</p>
+          </div>
+          <button onClick={(e) => sendSubmit(e)}>Login</button>
+        </div>
+
+        <div className="form-footer">
+          <p>
+            Nemate nalog?
+            <span>
+              <Link to="/singup">Sing Up</Link>
+            </span>
+          </p>
+          <p>Zaboravili ste password?</p>
+        </div>
+      </div>
+    </section>
   );
 }
