@@ -1,0 +1,38 @@
+@import '../../../style/defaultStyle.scss';
+@import '../../../style/mixins.scss';
+
+.input-container {
+  margin-bottom: 1rem;
+  .input {
+    height: 40px;
+    margin-bottom: 0.2rem;
+    display: flex;
+
+    & > span {
+      flex-grow: 1;
+      height: 100%;
+      border-bottom-left-radius: 5px;
+      border-top-left-radius: 5px;
+      background-color: $primaryColor;
+      @include flex-center;
+      font-size: 1rem;
+      color: $fontColor;
+    }
+
+    & > input {
+      flex-grow: 9;
+      height: 100%;
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+      padding-left: 1rem;
+      border: none;
+    }
+  }
+
+  & > .message > .invalid-input {
+    font-style: italic;
+    color: $danger;
+    font-size: .9rem;
+    font-weight: 600;
+  }
+}

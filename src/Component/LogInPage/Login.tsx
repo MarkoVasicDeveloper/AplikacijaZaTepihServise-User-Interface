@@ -16,10 +16,11 @@ import {
 } from "../../misc/Function/LogInPage/UserLogIn";
 
 import "./LogIn.css";
+import { Input } from "../layout/input/input";
+import { useInputText } from "../../hooks/useInputText";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { data, edit } = useInputText({});
   const [message, setMessage] = useState(false);
 
   const navigate = useNavigate();
@@ -32,8 +33,8 @@ export default function Login() {
     e.preventDefault();
 
     setMessage(false);
-    const userAuth = await userAuthorization(email, password);
-
+    const userAuth = await userAuthorization(data.email, data.password);
+    console.log(userAuth.data);
     if (!userAuth.data.token) return setMessage(true);
     saveToken("user", userAuth.data.token);
     saveRefreshToken("user", userAuth.data.refreshToken);
@@ -79,30 +80,9 @@ export default function Login() {
             </div>
           </div>
 
-          <div className="input-one">
-            <div>
-              <FontAwesomeIcon icon={faMailBulk} />
-            </div>
+          <Input icon={faMailBulk} onChangeInput={edit} name={"email"} placeholder="Email" id={"email"} required />
+          <Input icon={faKey} onChangeInput={edit} name={"password"} placeholder="Password" id={"password"} required />
 
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            ></input>
-          </div>
-          <div className="input-two">
-            <div>
-              <FontAwesomeIcon icon={faKey} />
-            </div>
-
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            ></input>
-          </div>
           <div className="submit-btn">
             <div
               className={message === false ? "hiddenMessage" : "showMessage"}
@@ -122,6 +102,7 @@ export default function Login() {
             <p>Zaboravili ste password?</p>
           </div>
         </div>
+        <button onClick={() => console.log(data)}>sss</button>
       </section>
     </div>
   );
