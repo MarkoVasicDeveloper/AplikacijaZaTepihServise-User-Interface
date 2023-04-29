@@ -1,4 +1,5 @@
 @import '../../style/mixins.scss';
+@import '../../style/defaultStyle.scss';
 
 #logIn {
   width: 100vw;
@@ -42,25 +43,6 @@
   flex-direction: row-reverse;
 }
 
-.submit-btn {
-  width: 100%;
-  height: 20%;
-  display: flex;
-  justify-content: right;
-  margin-bottom: 2rem;
-}
-
-.submit-btn > button {
-  width: 30%;
-  height: 50%;
-  margin-top: 2rem;
-  background-color: #793ea5;
-  border: none;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #ffffdd;
-}
-
 .form-footer {
   width: 100%;
   height: 20%;
@@ -79,25 +61,24 @@
   color: #fec400;
 }
 
+.message-container {
+  padding: 2rem;
+}
+
 .hiddenMessage {
   display: none;
 }
 
 .showMessage {
-  display: block;
-  width: 50%;
-  height: 100%;
   border-radius: 20px;
   background-color: #000000aa;
-  margin-right: 5rem;
-  color: #ffffdd;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto;
+  color: $fontColor;
   font-size: 0.8rem;
-  border: 1px solid #fec400;
-  padding: 0.2rem;
+  border: 1px solid $secondaryColor;
+  padding: 0.3rem;
   text-align: center;
+  box-shadow: 0 0 10px $danger;
 }
 
 @media (max-width: 400px) {

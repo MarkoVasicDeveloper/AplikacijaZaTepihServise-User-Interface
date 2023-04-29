@@ -1,0 +1,41 @@
+@import '../../../style/defaultStyle.scss';
+
+.submit {
+  width: max-content;
+  margin-block: 1rem;
+  background-color: $primaryColor;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: $fontColor;
+  padding: 0.3rem;
+  cursor: pointer;
+}
+
+.disabled{
+  width: max-content;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.3rem;
+  margin-block: 1rem;
+  background-color: $secondaryColor;
+  border: 1px solid $primaryColor;
+  cursor: no-drop;
+}
+
+.default{
+  width: max-content;
+  background-color: transparent;
+  padding: 0.3rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-block: 1rem;
+  color: $secondFontColor;
+  border: 1px solid $secondaryColor;
+  cursor: pointer;
+
+  &:hover {
+    color: $fontColor;
+    border: 1px solid $primaryColor;
+  }
+}

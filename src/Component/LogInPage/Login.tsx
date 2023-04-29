@@ -5,7 +5,7 @@ import {
   faMailBulk,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { saveRefreshToken, saveToken } from "../../api/api";
 import { useUser } from "../../Context/UserContext";
@@ -19,14 +19,22 @@ import "./LogIn.scss";
 import { InputWithValidation } from "../layout/input/input";
 import { useInputText } from "../../hooks/useInputText";
 import { SocialIcon } from "../layout/socialIcon/socialIcon";
+import { Button } from "../layout/button/button";
 
 export default function Login() {
   const { data, edit } = useInputText({});
   const [message, setMessage] = useState(false);
+  const [disabled, setDisabled] = useState(true);
 
   const navigate = useNavigate();
 
   const { setUserEvent } = useUser() as any;
+
+  useEffect(() => {
+    setMessage(false);
+    if (!data.password || !data.email) return setDisabled(true);
+    setDisabled(false);
+  }, [data])
 
   async function sendSubmit(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -36,7 +44,11 @@ export default function Login() {
     setMessage(false);
     const userAuth = await userAuthorization(data.email, data.password);
     console.log(userAuth.data);
-    if (!userAuth.data.token) return setMessage(true);
+    if (!userAuth.data.token) {
+      setMessage(true);
+      setDisabled(true);
+      return;
+    };
     saveToken("user", userAuth.data.token);
     saveRefreshToken("user", userAuth.data.refreshToken);
 
@@ -57,7 +69,7 @@ export default function Login() {
         errorHandler,
         positionOptions
       );
-    }
+    };
     navigate("/workerlogin");
   }
 
@@ -65,11 +77,10 @@ export default function Login() {
     <section id="logIn">
       <div className="form-holder">
         <div className="form-header">
-          <FontAwesomeIcon
-            icon={faArrowLeftLong}
-            onClick={() => navigate("/")}
-          />
+          <FontAwesomeIcon icon={faArrowLeftLong} onClick={() => navigate("/")} />
+
           <h1>Log In</h1>
+
           <div className="relative">
             <SocialIcon icon={faFacebook} link={"facebook.com"} />
             <SocialIcon icon={faInstagram} link={"instagram.com"} />
@@ -77,17 +88,14 @@ export default function Login() {
         </div>
 
         <InputWithValidation icon={faMailBulk} onChangeInput={edit} name={"email"} placeholder="Email" id={"email"} required />
-        <InputWithValidation icon={faKey} onChangeInput={edit} name={"password"} placeholder="Password" id={"password"} required />
+        <InputWithValidation icon={faKey} onChangeInput={edit} name={"password"} placeholder="Password" id={"password"} type="password" required />
 
-        <div className="submit-btn">
-          <div
-            className={message === false ? "hiddenMessage" : "showMessage"}
-          >
-            <p>Mail ili lozinka nisu tacni!</p>
-          </div>
-          <button onClick={(e) => sendSubmit(e)}>Login</button>
+        <div className="message-container">
+          <p className={message === false ? "hiddenMessage" : "showMessage"}>
+            Mail ili lozinka nisu tacni!
+          </p>
         </div>
-
+        <Button title="Login" onClickFunction={(e) => sendSubmit(e)} type='submit' disabled={disabled} />
         <div className="form-footer">
           <p>
             Nemate nalog?

@@ -12,8 +12,8 @@ export function useFormValidation (onChange: any, field: string, dirty: boolean,
     if (!result.valid) {
       setInvalid(true)
       setMessage(result.value)
+      onChange(event.target.name)
       if (field === 'checkbox') { onChange({ value, checked: false }); return }
-      onChange(event)
       return
     };
 
