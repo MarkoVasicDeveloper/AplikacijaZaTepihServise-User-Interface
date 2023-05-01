@@ -4,85 +4,68 @@
 #logIn {
   width: 100vw;
   height: 100vh;
-  background-image: url("../../Img/background-log-in-mini.webp");
-  background-size: cover;
-  background-position: center;
-  font-family: "Montserrat";
+  @include background("../../Img/background-log-in-mini.webp");
   @include flex-center;
-}
 
-.form-holder {
-  width: clamp(300px, 50%, 600px);
-  border-radius: 20px;
-  background-color: #000000dd;
-  padding: 1rem;
-}
+  .form-holder {
+    width: clamp(300px, 50%, 600px);
+    border-radius: 20px;
+    background-color: #000000dd;
+    padding: 1rem;
 
-.form-header {
-  color: #ffffdd;
-  display: flex;
-  align-items: center;
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-  position: relative;
-}
-.form-header > h1 {
-  margin-left: 1rem;
-  color: #fff;
-}
+    .form-header {
+      color: $fontColor;
+      display: flex;
+      align-items: center;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      position: relative;
 
-.form-header > svg:hover {
-  cursor: pointer;
-}
+      & > h1 {
+        margin-left: 1rem;
+        color: #fff;
+      }
+      
+      & > svg:hover {
+        cursor: pointer;
+      }
+      
+      .relative {
+        position: absolute;
+        top: -90%;
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+      }
+      
+    }
 
-.relative {
-  position: absolute;
-  top: -70%;
-  width: 100%;
-  display: flex;
-  flex-direction: row-reverse;
-}
+    .form-footer {
+      padding: 1rem;
+      border-top: 1px solid #9c9c9c;
+      color: $fontColor;
+      font-family: "Nunito Sans", sans-serif;
+      font-size: 1.2rem;
 
-.form-footer {
-  width: 100%;
-  height: 20%;
-  border-top: 1px solid #9c9c9c;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex-direction: column;
-  color: #ffffdd;
-  font-family: "Nunito Sans", sans-serif;
-  font-size: 1.2rem;
-}
+      & > p > span > a {
+        color: $secondFontColor;
+      }
+    }
+    
+    .message-container {
+      padding-block: 1rem;
 
-.form-footer > p > span > a {
-  font-family: "Montserrat";
-  color: #fec400;
-}
-
-.message-container {
-  padding: 2rem;
-}
-
-.hiddenMessage {
-  display: none;
-}
-
-.showMessage {
-  border-radius: 20px;
-  background-color: #000000aa;
-  margin: 0 auto;
-  color: $fontColor;
-  font-size: 0.8rem;
-  border: 1px solid $secondaryColor;
-  padding: 0.3rem;
-  text-align: center;
-  box-shadow: 0 0 10px $danger;
-}
-
-@media (max-width: 400px) {
-  .social {
-    width: 50%;
+      .api-message {
+        border-radius: 20px;
+        background-color: #000000aa;
+        margin: 0 auto;
+        color: $fontColor;
+        font-size: 0.8rem;
+        border: 1px solid $secondaryColor;
+        padding: 0.3rem;
+        text-align: center;
+        box-shadow: 0 0 10px $danger;
+      }
+    }
   }
 }

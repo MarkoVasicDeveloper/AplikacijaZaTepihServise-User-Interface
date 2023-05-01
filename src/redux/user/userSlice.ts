@@ -3,11 +3,18 @@ import { RootState } from "../store";
 
 interface User {
   userId: number
-  username: string
+  name: string
+  surname: string
   email: string
-  token: string
   login: boolean
-}
+  address: string
+  phone: string
+  city: string
+  coordinates: {
+    lat: string
+    lng: string
+  },
+};
 
 const initialState = {} as User;
 
@@ -16,13 +23,16 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUser (state, action) {
-      state = {...action.payload};
+      state = {...state, ...action.payload};
       return state;
+    },
+    setCoordinates (state, action) {
+      state.coordinates = {...action.payload}
     }
   }
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, setCoordinates } = userSlice.actions;
 
 export default userSlice.reducer;
 

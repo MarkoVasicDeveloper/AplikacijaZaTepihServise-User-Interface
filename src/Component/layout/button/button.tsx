@@ -5,7 +5,7 @@ interface ButtonProps {
   type?: 'submit' | 'button'
   title: string
   disabled?: boolean | undefined
-  onClickFunction: (() => void) | ((param: any) => Promise<void>)
+  onClickFunction: ((param: any) => void) | ((param: any) => Promise<void>)
   implementClass?: string
   titleFusnote?: string
   default?: boolean

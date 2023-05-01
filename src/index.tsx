@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CarpetReceptionsPage from './Component/carpetReceptionPage/CarpetReceptionsPage';
 import DeliveryPage from './Component/DeliveryPage/DeliveryPage';
 import DownloadList from './Component/DownloadListPage/DownloadList';
@@ -13,13 +13,16 @@ import User from './Context/UserContext';
 import Worker from './Context/WorkerContext';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import { setupStore } from './redux/store';
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter>
+      <Provider store={setupStore(undefined)}>
       <User>
         <Worker>
           <Routes>
@@ -40,7 +43,8 @@ root.render(
           </Routes>
         </Worker>
       </User>
-    </HashRouter>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 reportWebVitals();
