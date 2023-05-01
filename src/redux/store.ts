@@ -1,9 +1,11 @@
-import { combineReducers, configureStore, type PreloadedState } from '@reduxjs/toolkit'
+import { combineReducers, configureStore, type PreloadedState } from '@reduxjs/toolkit';
 
-import userReducer from './user/userSlice'
+import userReducer from './user/userSlice';
+import workerReducer from './worker/workerSlice';
 
 const rootReducer = combineReducers({
-  user: userReducer
+  user: userReducer,
+  worker: workerReducer
 })
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) =>

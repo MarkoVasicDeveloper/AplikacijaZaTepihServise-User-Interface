@@ -7,7 +7,6 @@ import DownloadList from './Component/DownloadListPage/DownloadList';
 import Login from './Component/LogInPage/Login';
 import MeasuringAndPreparingCarpet from './Component/MeasuringAndPreparing/MeasuringAndPreparingCarpet';
 import Scheduling from './Component/SchedulingPage/Scheduling';
-import WorkerLogin from './Component/WorkerLoginPage/WorkerLogin';
 import WorkerSingUp from './Component/WorkerSingUpPage/WorkerSingUp';
 import User from './Context/UserContext';
 import Worker from './Context/WorkerContext';
@@ -26,8 +25,8 @@ root.render(
       <User>
         <Worker>
           <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/workerlogin" element={<WorkerLogin />} />
+            <Route path="/" element={<Login workerLogIn={false} />} />
+              <Route path="/workerlogin" element={<Login workerLogIn={true} />} />
             <Route path="/workersingup" element={<WorkerSingUp />} />
             <Route path="/reception" element={<CarpetReceptionsPage />} />
             <Route

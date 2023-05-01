@@ -10,12 +10,13 @@ export function useLoginCheck(data: Record<string, any>): {
   sendData: (data: Record<string, any>, event: React.ChangeEvent) => void
   message: string
 } {
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [message, setMessage] = useState('');
 
-  useEffect(() => {setMessage('')}, [data])
+  useEffect(() => {setMessage('')}, [data]);
 
   const sendData = (data: Record<string, any>,event: React.ChangeEvent): void => {
     event.preventDefault();

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './input.scss'
 import { useFormValidation } from '../../../hooks/useFormValidation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,10 +14,12 @@ interface InputParam {
   footnoteTitle?: string
   placeholder?: string
   icon: IconDefinition
+  cleanUp?: boolean
 }
 
-export function InputWithValidation ({ icon, onChangeInput, onEnter, type, name, id, required, footnoteTitle, placeholder }: InputParam): JSX.Element {
-  const [dirty, setDirty] = useState(false)
+export function InputWithValidation({ icon, onChangeInput, onEnter, type, name, id, required, footnoteTitle, placeholder, cleanUp }: InputParam): JSX.Element {
+  const [dirty, setDirty] = useState(false);
+  const input = useRef<HTMLInputElement>(null);
 
   const { validation, message, invalid } = useFormValidation(onChangeInput, name, dirty, required);
 
@@ -27,7 +29,9 @@ export function InputWithValidation ({ icon, onChangeInput, onEnter, type, name,
       onChangeInput(name)
       onEnter();
     }
-  }
+  };
+
+  useEffect(() => { input.current!.value = '' }, [cleanUp]);
 
   return (
         <div className='input-container'>
@@ -36,6 +40,7 @@ export function InputWithValidation ({ icon, onChangeInput, onEnter, type, name,
               <FontAwesomeIcon icon={icon} />
             </span>
             <input
+                ref={input}
                 className={ invalid ? 'input-invalid' : ''}
                 name = { name }
                 type = { type ?? 'text'}
