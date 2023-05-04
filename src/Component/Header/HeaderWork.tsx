@@ -10,9 +10,9 @@ export default function HeaderWork(props: { item: any }) {
 
   const navigation = useNavigate();
 
-  useEffect(() => {
-    if (!user.userLogIn) return navigation("/");
-  }, []);
+  // useEffect(() => {
+  //   if (!user.userLogIn) return navigation("/");
+  // }, []);
 
   return (
     <div className={!showMobileNav ? "holder" : "mobile-nav"}>

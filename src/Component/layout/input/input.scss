@@ -3,6 +3,13 @@
 
 .input-container {
   margin-bottom: 1rem;
+
+  & > label {
+    display: block;
+    color: $secondaryColor;
+    transform: scale(0);
+  }
+
   .input {
     height: 40px;
     margin-bottom: 0.2rem;
@@ -10,6 +17,7 @@
 
     & > span {
       flex-grow: 1;
+      min-width: 2rem;
       height: 100%;
       border-bottom-left-radius: 5px;
       border-top-left-radius: 5px;
@@ -22,10 +30,7 @@
     & > input {
       flex-grow: 9;
       height: 100%;
-      border-bottom-right-radius: 5px;
-      border-top-right-radius: 5px;
       padding-left: 1rem;
-      border: none;
       outline: none;
     }
 
@@ -41,4 +46,30 @@
     font-size: .9rem;
     font-weight: 600;
   }
+}
+
+.login-input {
+  border: none;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.text-input {
+  border: none;
+  border-bottom: 1px solid $primaryColor;
+  border-right: 1px solid $primaryColor;
+  border-bottom-right-radius: 5px;
+  background-color: transparent;
+  color: $fontColor;
+}
+@keyframes show {
+  0%{
+    transform: scale(0);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+.show-label {
+  animation: show 1000ms ease forwards;
 }

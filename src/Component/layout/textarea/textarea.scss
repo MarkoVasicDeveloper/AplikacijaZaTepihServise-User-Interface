@@ -1,0 +1,24 @@
+@import '../../../style/defaultStyle.scss';
+
+.textarea-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  & > label {
+    display: block;
+    color: $secondaryColor;
+    transform: scale(0);
+  }
+
+  .textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid $primaryColor;
+    border-right: 1px solid $primaryColor;
+    border-bottom-right-radius: 5px;
+    outline: none;
+    color: $fontColor;
+    padding: 0.4rem;
+  }
+}

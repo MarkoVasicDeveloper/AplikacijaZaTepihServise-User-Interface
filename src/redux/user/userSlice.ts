@@ -38,3 +38,4 @@ export default userSlice.reducer;
 
 export const selectUserEmail = (state: RootState) => state.user.email;
 export const selectUserId = (state: RootState) => state.user.userId;
+export const selectLogIn = (state: RootState) => state.user.login;

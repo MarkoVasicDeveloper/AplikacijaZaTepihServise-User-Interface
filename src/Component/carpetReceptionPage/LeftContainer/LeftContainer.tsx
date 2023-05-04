@@ -2,8 +2,6 @@ import { MouseEvent, useEffect, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../../api/api";
 import { useClient } from "../../../Context/ClientContext";
-import { useUser } from "../../../Context/UserContext";
-import { useWorker } from "../../../Context/WorkerContext";
 import {
   AddClient,
   AddReception,
@@ -13,23 +11,33 @@ import {
   CarpetReceptionLeft,
   initialState,
 } from "../../../Reducers/CarpetReceptionLeft";
-import InputField from "./InputField/InputField";
 import "./LeftContainer.css";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { selectLogIn, selectUserId } from "../../../redux/user/userSlice";
+import { useInputText } from "../../../hooks/useInputText";
+import { InputWithValidation } from "../../layout/input/input";
+import { selectWorkerId } from "../../../redux/worker/workerSlice";
+import { Button } from "../../layout/button/button";
+import { Textarea } from "../../layout/textarea/textarea";
 
 export default function LeftContainer() {
+  const userLogIn = useTypedSelector(selectLogIn);
+  const userId = useTypedSelector(selectUserId);
+  const workerId = useTypedSelector(selectWorkerId);
+
   const navigator = useNavigate();
 
-  const { user } = useUser() as any;
-  const { worker } = useWorker() as any;
+  const { data, edit } = useInputText({});
+
   const { setClientEvent } = useClient() as any;
 
   const [state, dispatch] = useReducer(CarpetReceptionLeft, initialState);
 
   useEffect(() => {
-    if (!user.userLogIn) return navigator("/");
+    if (!userLogIn) return navigator("/");
     async function setReceptionNumber() {
       const lastNumberReception = await api(
-        `api/carpetReception/getBigistReceptionByUser/${user.userId}`,
+        `api/carpetReception/getBigistReceptionByUser/${userId}`,
         "post",
         {}
       );
@@ -43,7 +51,7 @@ export default function LeftContainer() {
     }
 
     setReceptionNumber();
-  }, [navigator, user.userId, user.userLogIn]);
+  }, [navigator, userId, userLogIn]);
 
   async function sendData(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
@@ -53,16 +61,16 @@ export default function LeftContainer() {
       state.surname,
       state.address,
       state.phone,
-      user.userId
+      userId
     );
 
     const addReception = await AddReception(
       addClient,
-      user.userId,
+      userId,
       state.numberOfCarpet,
       state.numberOfTracks,
       state.note,
-      worker.workerId
+      workerId
     );
 
     setClientEvent(PrepareClientObject(addReception));
@@ -71,49 +79,19 @@ export default function LeftContainer() {
 
   return (
     <section id="container">
-      <div className="headline">
-        <h2>Prijem Tepiha</h2>
-      </div>
-      <div className="clientInformation">
-        <h3>Podaci o klijentu</h3>
-        <InputField label={'Ime:'} id={'name'} value={state.name} 
-          onChange={(e) => dispatch({ type: "field", field: "name", value: e.target.value })} />
+      <h3>Podaci o klijentu</h3>
+      <InputWithValidation onChangeInput={edit} name='name' id='name' placeholder="Ime" label="Ime" />
+      <InputWithValidation onChangeInput={edit} name='surname' id='surname' placeholder="Prezime" label="Prezime" />
+      <InputWithValidation onChangeInput={edit} name='address' id='address' placeholder="Adresa" label="Adresa" />
+      <InputWithValidation onChangeInput={edit} name='phone' id='phone' placeholder="Telefon" label="Telefon" />
 
-        <InputField label={'Prezime:'} id={'surname'} value={state.surname} 
-          onChange={(e) => dispatch({ type: "field", field: "surname", value: e.target.value })} />
-        
-        <InputField label={'Adresa:'} id={'address'} value={state.address} 
-          onChange={(e) => dispatch({ type: "field", field: "address", value: e.target.value })} />
-        
-        <InputField label={'Telefon:'} id={'phone'} value={state.phone} 
-          onChange={(e) => dispatch({ type: "field", field: "phone", value: e.target.value })} />
+      <h3>Popis tepiha</h3>
+      <InputWithValidation onChangeInput={edit} name='carpets' id='carpets' placeholder="Broj tepiha" label="Broj tepiha" />
+      <InputWithValidation onChangeInput={edit} name='tracks' id='tracks' placeholder="Broj staza" label="Broj staza" />
 
-        <h3>Popis tepiha</h3>
-        
-        <InputField label={'Broj tepiha:'} id={'carpets'} value={state.numberOfCarpet} 
-          onChange={(e) => dispatch({ type: "field", field: "numberOfCarpet", value: e.target.value })}
-          type={'number'} />
-
-        <InputField label={'Broj staza:'} id={'tracks'} value={state.numberOfTracks} 
-          onChange={(e) => dispatch({ type: "field", field: "numberOfTracks", value: e.target.value })}
-          type={'number'} />
-      </div>
-        
-        <div className="clientInput">
-          <label htmlFor="note">Napomena:</label>
-          <textarea
-            name="note"
-            id="note"
-            cols={30}
-            rows={10}
-            value={state.note}
-            onChange={(e) =>
-              dispatch({ type: "field", field: "note", value: e.target.value })
-            }
-          ></textarea>
-        </div>
+      <Textarea name='note' id='note' onChangeInput={edit} label='Napomena' placeholder="Napomena" />
       <div className="sendButton">
-        <button onClick={(e) => sendData(e)}>Posalji...</button>
+        <Button title={"Posalji..."} type="submit" onClickFunction={(e) => sendData(e)} />
       </div>
     </section>
   );
