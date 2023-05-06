@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 interface Client {
   clientId: number
@@ -7,19 +8,21 @@ interface Client {
   phone: string
   address: string
   userCarpetReceptions: []
-  lastReception: []
-  numberOfCarpet: number
+  lastReception: number
+  numberOfCarpets: number
   numberOfTracks: number
+  timeAt: string
 }
 
-const initialState = {} as Client
+const initialState = {} as Client;
 
 export const clientSlice = createSlice({
   name: 'client',
   initialState,
   reducers: {
     setClient (state, action) {
-      state = { ...action.payload };
+      state = { ...state, ...action.payload };
+      return state;
     }
   }
 });
@@ -27,3 +30,6 @@ export const clientSlice = createSlice({
 export const { setClient } = clientSlice.actions;
 
 export default clientSlice.reducer;
+
+export const selectClientId = (state: RootState) => state.client.clientId;
+export const selectClient = (state: RootState) => state.client;

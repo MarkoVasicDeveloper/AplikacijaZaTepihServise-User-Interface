@@ -34,9 +34,9 @@ export function useWorkerLoginCheck (data: Record<string, any>): {
           return setLogMessage('Ime ili lozinka nisu tacni!');
         
         dispatch(setWorker({
-          workerName: res.data.name,
-          workerId: res.data.workerId,
-          workerLogIn: true,
+          name: res.data.name,
+          id: res.data.workerId,
+          logIn: true,
         }));
 
         navigate("/reception");

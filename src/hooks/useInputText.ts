@@ -4,7 +4,7 @@ export function useInputText (initialValue: Record<string, any>): {
   data: Record<string, any>
   edit: (event: React.ChangeEvent<HTMLInputElement> | any) => void
 } {
-  const [data, setData] = useState(initialValue)
+  const [data, setData] = useState(initialValue);
 
   const edit = (event: React.ChangeEvent<HTMLInputElement> | string): void => {
     if (typeof event === 'string') {

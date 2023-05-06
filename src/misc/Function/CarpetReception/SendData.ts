@@ -25,6 +25,7 @@ export async function AddReception(
   note: string,
   workerId: number
 ) {
+  
   if (client.status === "error") return;
 
   const addReception = await api(
@@ -39,6 +40,7 @@ export async function AddReception(
       userId: userId,
     }
   );
+  
   return addReception;
 }
 export function PrepareClientObject(reception: any) {

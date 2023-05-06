@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import { useClient } from "../../../Context/ClientContext";
 import "./RightContainer.css";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { selectClient } from "../../../redux/client/clientSlice";
 
 export default function RightContainer() {
-  const { client } = useClient() as any;
+  const client = useTypedSelector(selectClient);
 
   const [visits, setVisits] = useState([{}]) as any;
 
   useEffect(() => {
     function lastVisits() {
-      if (client.carpetReceptionUserArray === undefined) return [{}];
-      const lastReceptions = client.carpetReceptionUserArray;
+      if (client.userCarpetReceptions === undefined) return [{}];
+      const lastReceptions = client.userCarpetReceptions;
 
       return lastReceptions.map((reception: any) => ({
         date: reception.dateAt.split("T")[0],
@@ -26,7 +27,7 @@ export default function RightContainer() {
       <div className="savedInformation">
         <div className="headlineInformation">
           <h2>
-            ID broj klijenta: <span>{client.carpetReceptionUser}</span>
+            ID broj klijenta: <span>{client.lastReception}</span>
           </h2>
         </div>
         <div className="information">
@@ -47,7 +48,7 @@ export default function RightContainer() {
         </div>
         <div className="information">
           <p>Broj tepiha:</p>
-          <span>{client.numberOfCarpet}</span>
+          <span>{client.numberOfCarpets}</span>
         </div>
         <div className="information">
           <p>Broj staza:</p>

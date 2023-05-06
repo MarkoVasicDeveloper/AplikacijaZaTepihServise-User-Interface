@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import './textarea.scss';
 
@@ -8,10 +8,14 @@ interface TextareaProps {
   onChangeInput: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
   label: string
   placeholder?: string
+  cleanUp?: boolean
 }
 
-export function Textarea({ name, id, onChangeInput, label, placeholder }: TextareaProps) {
+export function Textarea({ name, id, onChangeInput, label, placeholder, cleanUp }: TextareaProps) {
   const [dirty, setDirty] = useState(false);
+  const input = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => { input.current!.value = '' }, [cleanUp]);
   
   return (
     <div className="textarea-container">
@@ -19,6 +23,7 @@ export function Textarea({ name, id, onChangeInput, label, placeholder }: Textar
         <label htmlFor={id} className={dirty ? 'show-label' : ''}>{label}</label>
         : ''}
       <textarea 
+        ref={input}
         className='textarea'
         name={name}
         id={id}
