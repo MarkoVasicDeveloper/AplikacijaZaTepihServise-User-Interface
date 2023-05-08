@@ -4,7 +4,7 @@ import "./LeftContainer.css";
 
 import { selectLogIn } from "../../../redux/user/userSlice";
 
-import { InputWithValidation } from "../../layout/input/input";
+import { Input } from "../../layout/input/input";
 import { Button } from "../../layout/button/button";
 import { Textarea } from "../../layout/textarea/textarea";
 
@@ -31,14 +31,14 @@ export default function LeftContainer() {
   return (
     <section id="container">
       <h3>Podaci o klijentu</h3>
-      <InputWithValidation onChangeInput={edit} name='name' id='name' placeholder="Ime" label="Ime" cleanUp={clean} required/>
-      <InputWithValidation onChangeInput={edit} name='surname' id='surname' placeholder="Prezime" label="Prezime" cleanUp={clean} required />
-      <InputWithValidation onChangeInput={edit} name='address' id='address' placeholder="Adresa" label="Adresa" cleanUp={clean} required />
-      <InputWithValidation onChangeInput={edit} name='phone' id='phone' placeholder="Telefon" label="Telefon" cleanUp={clean} />
+      <Input onChangeInput={edit} name='name' id='name' placeholder="Ime" label="Ime" cleanUp={clean} required/>
+      <Input onChangeInput={edit} name='surname' id='surname' placeholder="Prezime" label="Prezime" cleanUp={clean} required />
+      <Input onChangeInput={edit} name='address' id='address' placeholder="Adresa" label="Adresa" cleanUp={clean} required />
+      <Input onChangeInput={edit} name='phone' id='phone' placeholder="Telefon" label="Telefon" cleanUp={clean} />
 
       <h3>Popis tepiha</h3>
-      <InputWithValidation onChangeInput={edit} name='carpets' id='carpets' placeholder="Broj tepiha" label="Broj tepiha" cleanUp={clean} />
-      <InputWithValidation onChangeInput={edit} name='tracks' id='tracks' placeholder="Broj staza" label="Broj staza" cleanUp={clean} />
+      <Input onChangeInput={edit} name='carpets' id='carpets' placeholder="Broj tepiha" label="Broj tepiha" cleanUp={clean} />
+      <Input onChangeInput={edit} name='tracks' id='tracks' placeholder="Broj staza" label="Broj staza" cleanUp={clean} />
 
       <Textarea name='note' id='note' onChangeInput={edit} label='Napomena' placeholder="Napomena" cleanUp={clean} />
       <div className="sendButton">

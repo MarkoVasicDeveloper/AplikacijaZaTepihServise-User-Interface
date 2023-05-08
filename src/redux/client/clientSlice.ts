@@ -12,6 +12,7 @@ interface Client {
   numberOfCarpets: number
   numberOfTracks: number
   timeAt: string
+  note: string
 }
 
 const initialState = {} as Client;

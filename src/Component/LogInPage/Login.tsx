@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import "./LogIn.scss";
-import { InputWithValidation } from "../layout/input/input";
+import { Input } from "../layout/input/input";
 import { useInputText } from "../../hooks/useInputText";
 import { SocialIcon } from "../layout/socialIcon/socialIcon";
 import { Button } from "../layout/button/button";
@@ -55,8 +55,8 @@ export default function Login({ workerLogIn }: LoginProps) {
           </div>
         </div>
 
-        <InputWithValidation icon={workerLogIn ? faSignature : faMailBulk} onChangeInput={edit} name={workerLogIn ? "name" : "email"} placeholder={workerLogIn ? "Ime" : "Email"} id={workerLogIn ? "name" : "email"} cleanUp={workerLogIn} required />
-        <InputWithValidation icon={faKey} onChangeInput={edit} name={"password"} placeholder="Password" id={"password"} type="password" cleanUp={workerLogIn} required />
+        <Input icon={workerLogIn ? faSignature : faMailBulk} onChangeInput={edit} name={workerLogIn ? "name" : "email"} placeholder={workerLogIn ? "Ime" : "Email"} id={workerLogIn ? "name" : "email"} cleanUp={workerLogIn} required />
+        <Input icon={faKey} onChangeInput={edit} name={"password"} placeholder="Password" id={"password"} type="password" cleanUp={workerLogIn} required />
 
         <div className="message-container">
           <p className={message ? "api-message" : ''}> {message} </p>

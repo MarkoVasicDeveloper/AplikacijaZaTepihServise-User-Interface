@@ -18,7 +18,7 @@ interface InputParam {
   label?: string
 }
 
-export function InputWithValidation({ icon, onChangeInput, onEnter, type, name, id, required, footnoteTitle, placeholder, cleanUp, label }: InputParam): JSX.Element {
+export function Input({ icon, onChangeInput, onEnter, type, name, id, required, footnoteTitle, placeholder, cleanUp, label }: InputParam): JSX.Element {
   const [dirty, setDirty] = useState(false);
   const [implementClass, setImplementClass] = useState('');
   const input = useRef<HTMLInputElement>(null);
