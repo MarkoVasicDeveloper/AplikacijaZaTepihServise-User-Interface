@@ -1,26 +1,15 @@
-import { useEffect, useState } from "react";
 import "./RightContainer.css";
+
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { selectClient } from "../../../redux/client/clientSlice";
+
+import { LastVisitsChart } from "./lastVisitChart/lastVisitsChart";
 
 export default function RightContainer() {
   const client = useTypedSelector(selectClient);
 
-  const [visits, setVisits] = useState([{}]) as any;
-
-  useEffect(() => {
-    function lastVisits() {
-      if (client.userCarpetReceptions === undefined) return [{}];
-      const lastReceptions = client.userCarpetReceptions;
-
-      return lastReceptions.map((reception: any) => ({
-        date: reception.dateAt.split("T")[0],
-        numberOfCarpet: reception.numberOfCarpet,
-        numberOfTracks: reception.numberOfTracks,
-      }));
-    }
-    setVisits(lastVisits().slice(-4).reverse());
-  }, [client]);
+  const labels = ['Ime: ', 'Prezime: ', 'Adresa: ', 'Telefon: ', 'Broj tepiha: ', 'Broj staza: '];
+  const data = [client.name, client.surname, client.address, client.phone, client.numberOfCarpets, client.numberOfTracks];
 
   return (
     <section id="container">
@@ -30,81 +19,21 @@ export default function RightContainer() {
             ID broj klijenta: <span>{client.lastReception}</span>
           </h2>
         </div>
-        <div className="information">
-          <p>Ime: </p>
-          <span>{client.name}</span>
-        </div>
-        <div className="information">
-          <p>Prezime: </p>
-          <span>{client.surname}</span>
-        </div>
-        <div className="information">
-          <p>Adresa: </p>
-          <span>{client.address}</span>
-        </div>
-        <div className="information">
-          <p>Telefon: </p>
-          <span>{client.phone}</span>
-        </div>
-        <div className="information">
-          <p>Broj tepiha:</p>
-          <span>{client.numberOfCarpets}</span>
-        </div>
-        <div className="information">
-          <p>Broj staza:</p>
-          <span>{client.numberOfTracks}</span>
-        </div>
+        {
+          data.map((data, index) => (
+            <div key={index} className="information">
+              <p>{ labels[index] } </p>
+              <span>{data}</span>
+            </div>
+          ))
+        }
       </div>
       <div className="lastVisit">
-        <div className="visitHedline">
-          <h3>
-            Posete klijenta nasem servisu: <span>{visits.length - 1}</span>
-          </h3>
-        </div>
-        <div className="table">
-          <div className="visit">
-            <div>
-              <p>Datum:</p>
-              <span>{!visits[0] ? "" : visits[0].date}</span>
-            </div>
-            <div>
-              <p>Broj tepiha:</p>
-              <span>{!visits[0] ? "" : visits[0].numberOfCarpet}</span>
-            </div>
-            <div>
-              <p>Broj staza:</p>
-              <span>{!visits[0] ? "" : visits[0].numberOfTracks}</span>
-            </div>
-          </div>
-          <div className="visit">
-            <div>
-              <p>Datum:</p>
-              <span>{!visits[1] ? "" : visits[1].date}</span>
-            </div>
-            <div>
-              <p>Broj tepiha:</p>
-              <span>{!visits[1] ? "" : visits[1].numberOfCarpet}</span>
-            </div>
-            <div>
-              <p>Broj staza:</p>
-              <span>{!visits[1] ? "" : visits[1].numberOfTracks}</span>
-            </div>
-          </div>
-          <div className="visit">
-            <div>
-              <p>Datum:</p>
-              <span>{!visits[2] ? "" : visits[2].date}</span>
-            </div>
-            <div>
-              <p>Broj tepiha:</p>
-              <span>{!visits[2] ? "" : visits[2].numberOfCarpet}</span>
-            </div>
-            <div>
-              <p>Broj staza:</p>
-              <span>{!visits[2] ? "" : visits[2].numberOfTracks}</span>
-            </div>
-          </div>
-        </div>
+        <h3>
+          Posete klijenta nasem servisu:
+          <span> {client && client.userCarpetReceptions ? client.userCarpetReceptions.length : '' }</span>
+        </h3>
+        <LastVisitsChart userCarpetReceptions={client.userCarpetReceptions}  />
       </div>
     </section>
   );

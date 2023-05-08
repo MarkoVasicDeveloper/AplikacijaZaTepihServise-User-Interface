@@ -1,4 +1,3 @@
-import Client from "../../Context/ClientContext";
 import { WorkProps } from "../../misc/HeaderProps/props";
 import HeaderWork from "../Header/HeaderWork";
 import HeaderTopInfo from "../HeaderTopInfo/HeadetTopInfo";
@@ -13,10 +12,8 @@ export default function CarpetReceptionsPage() {
       <HeaderTopInfo />
       <h1>Prijem tepiha</h1>
       <div className="centralContent">
-        <Client>
-          <LeftContainer />
-          <RightContainer />
-        </Client>
+        <LeftContainer />
+        <RightContainer />
       </div>
     </section>
   );

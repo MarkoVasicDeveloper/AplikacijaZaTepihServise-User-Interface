@@ -28,12 +28,6 @@ export default function LeftContainer() {
 
   useEffect(() => { if (!userLogIn) navigator("/") }, [navigator, userLogIn]);
 
-  function sendData() {
-    addClient(data)
-
-    setClean(!clean);
-  }
-
   return (
     <section id="container">
       <h3>Podaci o klijentu</h3>
