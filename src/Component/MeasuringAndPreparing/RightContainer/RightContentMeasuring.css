@@ -12,7 +12,6 @@
 
 .carpetDiv {
   width: 250px;
-  height: 270px;
   border: 1px solid #fec400;
   border-radius: 20px;
   padding: 1rem 0.5rem;
@@ -23,7 +22,6 @@
 }
 .carpetDiv > .dimension {
   width: 100%;
-  margin-bottom: 0.7rem;
   display: flex;
   justify-content: space-between;
   align-items: center;

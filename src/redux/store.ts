@@ -4,12 +4,14 @@ import userReducer from './user/userSlice';
 import workerReducer from './worker/workerSlice';
 import clientReducer from './client/clientSlice';
 import receptionReducer from './reception/receptionSlice';
+import carpetsReducer from './carpets/carpetsSlice';
 
 const rootReducer = combineReducers({
   user: userReducer,
   worker: workerReducer,
   client: clientReducer,
-  reception: receptionReducer
+  reception: receptionReducer,
+  carpets: carpetsReducer
 })
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) =>

@@ -5,6 +5,7 @@ import { setReception } from "../redux/reception/receptionSlice";
 import { selectUserId } from "../redux/user/userSlice"
 import { useAppDispatch } from "./useAppDispatch";
 import { useTypedSelector } from "./useTypedSelector"
+import { setCarpetsEmpty } from "../redux/carpets/carpetsSlice";
 
 export function useCurrentReception ()
 : {getReception: (receptionUserId: number, date: Date) => void; worker: string;} {
@@ -23,6 +24,7 @@ export function useCurrentReception ()
 
     reception()
       .then(currentReception => {
+        dispatch(setCarpetsEmpty([]));
         if (currentReception.data.statusCode === -5001)
         return dispatch(setReception({ show: 0 }));
 

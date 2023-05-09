@@ -8,6 +8,7 @@ export function useFormValidation (onChange: any, field: string, dirty: boolean,
 
   function validation (
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement>): void {
+    if (!required) return onChange(event);
     const result = formValidation(event.target.value, field, dirty, required);
     if (!result.valid) {
       setInvalid(true)
