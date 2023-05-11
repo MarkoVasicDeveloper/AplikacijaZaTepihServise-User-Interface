@@ -60,6 +60,8 @@ export function useLoginCheck(data: Record<string, any>): {
                     errorHandler,
                     positionOptions
                 );
+              } else {
+                alert('Lokacija nije omogucena! Ako zelite da koristite sve funkcionalnosti, morate omoguciti lokaciju!')
               };
 
               navigate('/workerlogin', { replace: true });

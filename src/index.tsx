@@ -19,31 +19,29 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={setupStore(undefined)}>
-      <User>
-        <Worker>
-          <Routes>
-            <Route path="/" element={<Login workerLogIn={false} />} />
-              <Route path="/workerlogin" element={<Login workerLogIn={true} />} />
-            <Route path="/workersingup" element={<WorkerSingUp />} />
-            <Route path="/reception" element={<CarpetReceptionsPage />} />
-            <Route
-              path="/measuringandpreparingcarpet"
-              element={<MeasuringAndPreparingCarpet />}
-            />
-            <Route path="/deliverylist" element={<DeliveryPage />} />
-            <Route
-              path="/schedulingcarpetretrivals"
-              element={<Scheduling />}
-            />
-            <Route path="/downloadlist" element={<DownloadList />} />
-          </Routes>
-        </Worker>
-      </User>
-      </Provider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <Provider store={setupStore(undefined)}>
+    <User>
+      <Worker>
+        <Routes>
+          <Route path="/" element={<Login workerLogIn={false} />} />
+            <Route path="/workerlogin" element={<Login workerLogIn={true} />} />
+          <Route path="/workersingup" element={<WorkerSingUp />} />
+          <Route path="/reception" element={<CarpetReceptionsPage />} />
+          <Route
+            path="/measuringandpreparingcarpet"
+            element={<MeasuringAndPreparingCarpet />}
+          />
+          <Route path="/deliverylist" element={<DeliveryPage />} />
+          <Route
+            path="/schedulingcarpetretrivals"
+            element={<Scheduling />}
+          />
+          <Route path="/downloadlist" element={<DownloadList />} />
+        </Routes>
+      </Worker>
+    </User>
+    </Provider>
+  </BrowserRouter>
 );
 reportWebVitals();

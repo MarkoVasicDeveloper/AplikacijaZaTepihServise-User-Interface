@@ -30,7 +30,7 @@ export default function LeftContentMeasuring() {
         <label htmlFor="receptionUserId">
           Unesite <span>ID</span> broj tepiha:
         </label>
-        <Input onChangeInput={edit} name={"receptionUserId"} id={"receptionUserId"} />
+        <Input onChangeInput={edit} name={"receptionUserId"} id={"receptionUserId"} onEnter={() => getReception(data.receptionUserId, date)} />
         <Button title="Posalji" onClickFunction={() => getReception(data.receptionUserId, date) } />
       </div>
       <div className="userInfo">

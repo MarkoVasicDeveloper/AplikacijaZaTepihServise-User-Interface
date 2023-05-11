@@ -17,6 +17,7 @@ export function Carpet ({ reception, index }: CarpetProps) {
   const editCarpet = useEditCarpet();
 
   const [clear, setClear] = useState(false);
+  const [disabled, setDisabled] = useState(false);
 
   useEffect(() => { setClear(prev => !prev) }, [reception.carpetReceptionUserId]);
   
@@ -33,7 +34,7 @@ export function Carpet ({ reception, index }: CarpetProps) {
         <Input type="number" onChangeInput={edit} name={`price-${index}`} id={`price-${index}`} label="Cena" placeholder="Cena" cleanUp={clear} />
       </div>
       <div className="carpetButton">
-        <Button onClickFunction={() => addCarpet(data, index, reception)} title="Posalji" />
+        <Button onClickFunction={() => { addCarpet(data, index, reception); setDisabled(true) }} title="Posalji" disabled={disabled} />
         <Button onClickFunction={() => editCarpet(data, index, reception)} title="Izmeni" />
       </div>
       <div className="finallyInfo">

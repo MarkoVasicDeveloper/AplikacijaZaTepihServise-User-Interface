@@ -9,6 +9,7 @@ export function useAddClient (): (data: Record<string, any>) => void {
   const dispatch = useAppDispatch();
 
   const addClient = (data: Record<string, any>): void => {
+    if(!data.name && !data.surname && !data.address && !data.phone) return;
     const add = async function (): Promise<ApiResponse> {
       return await api(`api/clients/addClient/${userId}`, "post", {
       name: data.name,

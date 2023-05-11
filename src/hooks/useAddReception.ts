@@ -27,6 +27,7 @@ export function useAddReception (data: Record<string, unknown>) {
       note: data.note,
       carpet_reception_user: localStorage.getItem("reception_user"),
       userId: userId,
+      delivered: 0
     }
   );
 

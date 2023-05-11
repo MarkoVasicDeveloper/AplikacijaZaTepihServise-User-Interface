@@ -19,9 +19,10 @@ export function useAddCarpet () {
   
   const addCarpet = (data: Record<string, unknown>, index: number, reception: Reception) => {
     if (!data[`width-${index}`] && !data[`height-${index}`] && !data[`price-${index}`]) return;
-
+    
     const add = async () => await api(`api/carpet/addCarpet/${userId}`, "post", {
-      carpetReception: reception.carpetReceptionUserId,
+      carpet_reception_user: Number(reception.carpetReceptionUserId),
+      carpetReception: reception.carpetReceptionId,
       width: data[`width-${index}`],
       height: data[`height-${index}`],
       price: data[`price-${index}`],

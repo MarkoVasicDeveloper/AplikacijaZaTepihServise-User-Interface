@@ -12,7 +12,7 @@ export function useEditReception () {
       "post",
       {
         carpetReceptionId: reception.carpetReceptionUserId,
-        prepare: reception.prepared + index,
+        prepare: reception.prepared + index + 1,
       },
       "user"
     );
