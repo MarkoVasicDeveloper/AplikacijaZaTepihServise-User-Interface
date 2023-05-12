@@ -1,5 +1,4 @@
-import { WorkProps } from "../../misc/HeaderProps/props";
-import HeaderWork from "../Header/HeaderWork";
+import Header from "../Header/header";
 import HeaderTopInfo from "../HeaderTopInfo/HeadetTopInfo";
 import "./DeliveryPage.css";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
@@ -13,7 +12,7 @@ export default function DeliveryPage() {
 
   return (
     <section id="deliveryPage">
-      <HeaderWork item={WorkProps} />
+      <Header />
       <HeaderTopInfo />
       <div className="deliveryContent">
         <div className="delivery">

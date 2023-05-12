@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCoordinates, setUser } from '../redux/user/userSlice';
 import api, { ApiResponse, saveRefreshToken, saveToken } from '../api/api';
-import { errorHandler, positionOptions } from '../misc/Function/Location';
+import { errorHandler, positionOptions } from '../misc/Location';
 
 export function useLoginCheck(data: Record<string, any>): {
   sendData: (data: Record<string, any>, event: React.ChangeEvent) => void

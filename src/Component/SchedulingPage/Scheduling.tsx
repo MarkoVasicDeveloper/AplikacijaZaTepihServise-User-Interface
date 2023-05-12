@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { WorkProps } from "../../misc/HeaderProps/props";
-import HeaderWork from "../Header/HeaderWork";
+import Header from "../Header/header";
 import HeaderTopInfo from "../HeaderTopInfo/HeadetTopInfo";
 import "./Scheduling.css";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
@@ -24,7 +23,7 @@ export default function Scheduling() {
 
   return (
     <section id="scheduling">
-      <HeaderWork item={WorkProps} />
+      <Header />
       <HeaderTopInfo />
       <h1>Zakazivanje preuzimanja</h1>
       <div className="schedulingContent">

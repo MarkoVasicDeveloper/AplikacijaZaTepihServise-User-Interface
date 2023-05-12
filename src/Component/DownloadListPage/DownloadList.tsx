@@ -1,5 +1,4 @@
-import { WorkProps } from "../../misc/HeaderProps/props";
-import HeaderWork from "../Header/HeaderWork";
+import Header from "../Header/header";
 import HeaderTopInfo from "../HeaderTopInfo/HeadetTopInfo";
 import "./DownloadList.css";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
@@ -23,7 +22,7 @@ export default function DownloadList() {
 
   return (
     <section id="deliveryPage">
-      <HeaderWork item={WorkProps} />
+      <Header />
       <HeaderTopInfo />
       <div className="deliveryContent">
         <div className="delivery">

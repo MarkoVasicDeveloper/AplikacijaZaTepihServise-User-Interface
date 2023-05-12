@@ -5,98 +5,55 @@ import {
   faSignature,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import api from "../../api/api";
 import "./WorkerSingUp.css";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { selectUserId } from "../../redux/user/userSlice";
+import { useInputText } from "../../hooks/useInputText";
+import { Input } from "../layout/input/input";
+import { Button } from "../layout/button/button";
+import { SocialIcon } from "../layout/socialIcon/socialIcon";
+import { useWorkerSingUp } from "../../hooks/useWorkerSingUp";
 
-export default function WorkerSingUp() {
-  const userId = useTypedSelector(selectUserId);
-  
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [message, setMessage] = useState(false);
-  const [required, setRequired] = useState(false);
+export default function WorkerSingUp(): JSX.Element {
+  const { addWorker, message } = useWorkerSingUp();
 
+  const { data, edit } = useInputText({});
+  const [disabled, setDisabled] = useState(false);
   const navigate = useNavigate();
 
-  async function sendSubmit(
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) {
-    e.preventDefault();
-    if (name === "" || password === "") {
-      setRequired(true);
-      setMessage(true);
-      return;
-    }
-    const addWorker = await api(`api/worker/addWorker/${userId}`, "post", {
-      password: password,
-      name: name,
-    });
-    if (addWorker.data.statusCode === -5001) return setMessage(true);
-    navigate("/workerlogin");
-  }
+  useEffect(() => {
+    if (!data.name || !data.password) setDisabled(true)
+  }, [data])
 
   return (
     <div>
       <section id="singUp">
         <div className="form-holder-singUp singUp-worker">
           <div className="form-header-singUp">
-            <FontAwesomeIcon
-              icon={faArrowLeftLong}
-              onClick={() => navigate("/")}
-            />
+            <FontAwesomeIcon icon={faArrowLeftLong} onClick={() => navigate("/")} />
             <h1>Sing up</h1>
-            <div className="social-singUp">
-              <a href="facebook.com">
-                <FontAwesomeIcon icon={faFacebook} />
-              </a>
-              <a href="instagram.com">
-                <FontAwesomeIcon icon={faInstagram} />
-              </a>
+            <div className="relative">
+              <SocialIcon icon={faFacebook} link={"facebook.com"} />
+              <SocialIcon icon={faInstagram} link={"instagram.com"} />
             </div>
           </div>
           <div className="input-holder">
             <div className="left-input-holder">
               <div className="input-one-singUp">
-                <div>
-                  <FontAwesomeIcon icon={faSignature} />
-                </div>
-                <input
-                  type="text"
-                  placeholder="Ime"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                ></input>
+                <Input onChangeInput={edit} name='name' id='name' placeholder="Ime" icon={faSignature} required />
               </div>
 
               <div className="input-one-singUp">
-                <div>
-                  <FontAwesomeIcon icon={faKey} />
-                </div>
-
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                ></input>
+                <Input type="password" onChangeInput={edit} name='password' id='password' placeholder="Lozinka" icon={faKey} required />
               </div>
             </div>
           </div>
           <div className="btn-textMesage-holder">
-            <div className={!message ? "hiddenMessage" : "showMessageLogin"}>
-              <p>
-                {required
-                  ? "Sva polja moraju biti popunjena"
-                  : "Ime je zauzeto!"}
-              </p>
+            <div>
+              <p>{message}</p>
             </div>
             <div className="btn-div">
-              <button onClick={(e) => sendSubmit(e)}>Sing Up</button>
+              <Button title='Registruj se' onClickFunction={() => addWorker(data)} disabled={disabled} /> 
             </div>
 
             <div className="form-footer-singUp">

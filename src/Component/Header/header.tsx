@@ -1,20 +1,16 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "./HeaderWork.css";
+import { Link } from "react-router-dom";
+import "./header.css";
+import { HeaderProps, headerProps } from "../../misc/HeaderProps/props";
 
-export default function HeaderWork(props: { item: any }) {
+
+export default function Header(): JSX.Element {
   const [showMobileNav, setShowMobileNav] = useState(false);
-
-  const navigation = useNavigate();
-
-  // useEffect(() => {
-  //   if (!user.userLogIn) return navigation("/");
-  // }, []);
 
   return (
     <div className={!showMobileNav ? "holder" : "mobile-nav"}>
       <nav>
-        {props.item.map((prop: any) => {
+        {headerProps.map((prop: HeaderProps) => {
           return (
             <ul key={prop.id}>
               <li>
