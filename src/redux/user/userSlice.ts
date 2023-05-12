@@ -36,6 +36,7 @@ export const { setUser, setCoordinates } = userSlice.actions;
 
 export default userSlice.reducer;
 
+export const selectUserName = (state: RootState) => state.user.name;
 export const selectUserEmail = (state: RootState) => state.user.email;
 export const selectUserId = (state: RootState) => state.user.userId;
 export const selectLogIn = (state: RootState) => state.user.login;

@@ -31,7 +31,7 @@ export function Delivery({ reception }: DeliveryProps) {
       <div className="infoReception flex">
         {
           labels.map((label: string, index: number) => (
-            <div className="info" style={label === 'Tepisi:' ? {marginTop: '1rem'} : {}}>
+            <div key={index} className="info" style={label === 'Tepisi:' ? {marginTop: '1rem'} : {}}>
               <p>{label}</p>
               <span>{data[index]}</span>
             </div>

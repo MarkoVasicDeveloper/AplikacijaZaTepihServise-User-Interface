@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useUser } from "../../Context/UserContext";
 import {
   editSchedule,
   getAllSchedule,
@@ -8,18 +7,20 @@ import { WorkProps } from "../../misc/HeaderProps/props";
 import HeaderWork from "../Header/HeaderWork";
 import HeaderTopInfo from "../HeaderTopInfo/HeadetTopInfo";
 import "./DownloadList.css";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { selectUserId } from "../../redux/user/userSlice";
 
 export default function DownloadList() {
-  const { user } = useUser() as any;
+  const userId = useTypedSelector(selectUserId);
 
   const [downloadArray, setDownloadArray] = useState<[]>([]) as any;
 
   useEffect(() => {
     async function setSchedule() {
-      setDownloadArray([...(await getAllSchedule(user.userId))]);
+      setDownloadArray([...(await getAllSchedule(userId))]);
     }
     setSchedule();
-  }, [user.userId]);
+  }, [userId]);
 
   return (
     <section id="deliveryPage">
@@ -55,9 +56,9 @@ export default function DownloadList() {
               </div>
               <div className="buttonReception">
                 <button
-                  onClick={() =>
-                    (window.location.href = `https://www.google.com/maps/dir/${user.coordinates.lat} ${user.coordinates.lng}/${reception.address}`)
-                  }
+                  // onClick={() =>
+                  //   (window.location.href = `https://www.google.com/maps/dir/${user.coordinates.lat} ${user.coordinates.lng}/${reception.address}`)
+                  // }
                 >
                   Treba ti pomoc da nadjes?
                 </button>
@@ -66,7 +67,7 @@ export default function DownloadList() {
                     setDownloadArray([
                       ...(await editSchedule(
                         reception.schedulingCarpetId,
-                        user.userId,
+                        userId,
                         downloadArray
                       )),
                     ])

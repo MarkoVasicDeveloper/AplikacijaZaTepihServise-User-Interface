@@ -17,8 +17,8 @@ export default function DeliveryPage() {
       <HeaderTopInfo />
       <div className="deliveryContent">
         <div className="delivery">
-          {forDelivery.map((reception: any) => (
-            <Delivery reception={reception} />
+          {forDelivery.map((reception: any, index: number) => (
+            <Delivery key={index} reception={reception} />
           ))}
         </div>
       </div>

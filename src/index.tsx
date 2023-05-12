@@ -8,8 +8,6 @@ import Login from './Component/LogInPage/Login';
 import MeasuringAndPreparingCarpet from './Component/MeasuringAndPreparing/MeasuringAndPreparingCarpet';
 import Scheduling from './Component/SchedulingPage/Scheduling';
 import WorkerSingUp from './Component/WorkerSingUpPage/WorkerSingUp';
-import User from './Context/UserContext';
-import Worker from './Context/WorkerContext';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { setupStore } from './redux/store';
@@ -21,26 +19,22 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <Provider store={setupStore(undefined)}>
-    <User>
-      <Worker>
-        <Routes>
-          <Route path="/" element={<Login workerLogIn={false} />} />
-            <Route path="/workerlogin" element={<Login workerLogIn={true} />} />
-          <Route path="/workersingup" element={<WorkerSingUp />} />
-          <Route path="/reception" element={<CarpetReceptionsPage />} />
-          <Route
-            path="/measuringandpreparingcarpet"
-            element={<MeasuringAndPreparingCarpet />}
-          />
-          <Route path="/deliverylist" element={<DeliveryPage />} />
-          <Route
-            path="/schedulingcarpetretrivals"
-            element={<Scheduling />}
-          />
-          <Route path="/downloadlist" element={<DownloadList />} />
-        </Routes>
-      </Worker>
-    </User>
+      <Routes>
+        <Route path="/" element={<Login workerLogIn={false} />} />
+          <Route path="/workerlogin" element={<Login workerLogIn={true} />} />
+        <Route path="/workersingup" element={<WorkerSingUp />} />
+        <Route path="/reception" element={<CarpetReceptionsPage />} />
+        <Route
+          path="/measuringandpreparingcarpet"
+          element={<MeasuringAndPreparingCarpet />}
+        />
+        <Route path="/deliverylist" element={<DeliveryPage />} />
+        <Route
+          path="/schedulingcarpetretrivals"
+          element={<Scheduling />}
+        />
+        <Route path="/downloadlist" element={<DownloadList />} />
+      </Routes>
     </Provider>
   </BrowserRouter>
 );

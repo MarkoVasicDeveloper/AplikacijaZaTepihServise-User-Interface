@@ -8,16 +8,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../api/api";
-import { useUser } from "../../Context/UserContext";
 import "./WorkerSingUp.css";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { selectUserId } from "../../redux/user/userSlice";
 
 export default function WorkerSingUp() {
+  const userId = useTypedSelector(selectUserId);
+  
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState(false);
   const [required, setRequired] = useState(false);
-
-  const { user } = useUser() as any;
 
   const navigate = useNavigate();
 
@@ -30,7 +31,7 @@ export default function WorkerSingUp() {
       setMessage(true);
       return;
     }
-    const addWorker = await api(`api/worker/addWorker/${user.userId}`, "post", {
+    const addWorker = await api(`api/worker/addWorker/${userId}`, "post", {
       password: password,
       name: name,
     });

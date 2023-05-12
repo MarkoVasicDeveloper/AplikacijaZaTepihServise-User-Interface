@@ -6,6 +6,7 @@ export async function getAllSchedule(userId: number) {
     "get",
     {}
   );
+  console.log(allSchedule)
   if (allSchedule.status === "error") return [];
   return allSchedule.data;
 }

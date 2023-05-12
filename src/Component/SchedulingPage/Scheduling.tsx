@@ -1,63 +1,26 @@
 import { useState } from "react";
-import api from "../../api/api";
-import { useUser } from "../../Context/UserContext";
 import { WorkProps } from "../../misc/HeaderProps/props";
 import HeaderWork from "../Header/HeaderWork";
 import HeaderTopInfo from "../HeaderTopInfo/HeadetTopInfo";
 import "./Scheduling.css";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useInputText } from "../../hooks/useInputText";
+import { Input } from "../layout/input/input";
+import { selectLastSchedul } from "../../redux/schedul/schedulSlice";
+import { Textarea } from "../layout/textarea/textarea";
+import { useSchedule } from "../../hooks/useSchedule";
+import { Button } from "../layout/button/button";
 
 export default function Scheduling() {
-  const { user } = useUser() as any;
+  const schedule = useTypedSelector(selectLastSchedul);
 
-  const [userInfo, setUserInfo] = useState({
-    name: "",
-    surname: "",
-    address: "",
-    phone: "",
-    email: "",
-    note: "",
-  });
+  const sendSchedule = useSchedule();
 
-  const [savedInfo, setSavedInfo] = useState({
-    savedName: "",
-    savedSurname: "",
-    savedAddress: "",
-    savedPhone: "",
-    savedEmail: "",
-    savedNote: "",
-  }) as any;
+  const {data, edit} = useInputText({});
+  const [clear, setClear] = useState(false);
 
-  async function setSchedule() {
-    if (
-      savedInfo.name === "" ||
-      savedInfo.surname === "" ||
-      savedInfo.phone === ""
-    )
-      return;
-    const scheduleResult = await api(
-      `api/schedulingCarpet/add/${user.userId}`,
-      "post",
-      userInfo
-    );
-
-    setUserInfo({
-      name: "",
-      surname: "",
-      address: "",
-      phone: "",
-      email: "",
-      note: "",
-    });
-
-    setSavedInfo({
-      savedName: scheduleResult.data.name,
-      savedSurname: scheduleResult.data.surname,
-      savedAddress: scheduleResult.data.address,
-      savedPhone: scheduleResult.data.phone,
-      savedEmail: scheduleResult.data.email,
-      savedNote: scheduleResult.data.note,
-    });
-  }
+  const labels = ['Ime:', 'Prezime', 'Adresa', 'Telefon', 'Email', 'Napomena'];
+  const result = [schedule.name, schedule.surname, schedule.address, schedule.phone, schedule.email, schedule.note];
 
   return (
     <section id="scheduling">
@@ -68,108 +31,27 @@ export default function Scheduling() {
         <div className="leftContent">
           <h3>Obavezne informacije</h3>
           <div className="informationSheduling">
-            <div className="infoInput">
-              <label htmlFor="name">Ime:</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                value={userInfo.name}
-                onChange={(e) =>
-                  setUserInfo({ ...userInfo, name: e.target.value })
-                }
-              />
-            </div>
-            <div className="infoInput">
-              <label htmlFor="surname">Prezime:</label>
-              <input
-                type="text"
-                name="surname"
-                id="surname"
-                value={userInfo.surname}
-                onChange={(e) =>
-                  setUserInfo({ ...userInfo, surname: e.target.value })
-                }
-              />
-            </div>
-            <div className="infoInput">
-              <label htmlFor="address">Adresa:</label>
-              <input
-                type="text"
-                name="address"
-                id="address"
-                value={userInfo.address}
-                onChange={(e) =>
-                  setUserInfo({ ...userInfo, address: e.target.value })
-                }
-              />
-            </div>
-            <div className="infoInput">
-              <label htmlFor="phone">Telefon:</label>
-              <input
-                type="tel"
-                name="phone"
-                id="phone"
-                value={userInfo.phone}
-                onChange={(e) =>
-                  setUserInfo({ ...userInfo, phone: e.target.value })
-                }
-              />
-            </div>
+            <Input onChangeInput={edit} name="name" id="name" label="Ime:" placeholder="Ime" cleanUp={clear} required/>
+            <Input onChangeInput={edit} name="surname" id="surname" label="Prezime:" placeholder="Prezime" cleanUp={clear} required/>
+            <Input onChangeInput={edit} name="address" id="address" label="Adresa:" placeholder="Adresa" cleanUp={clear} required/>
+            <Input onChangeInput={edit} name="phone" id="phone" label="Telefon:" placeholder="Telefon" cleanUp={clear} />
 
             <h3>Ostale informacije</h3>
-
-            <div className="infoInput">
-              <label htmlFor="Email">Email:</label>
-              <input
-                type="text"
-                name="Email"
-                id="Email"
-                value={userInfo.email}
-                onChange={(e) =>
-                  setUserInfo({ ...userInfo, email: e.target.value })
-                }
-              />
-            </div>
-            <div className="infoInput">
-              <label htmlFor="note">Napomena:</label>
-              <textarea
-                id="note"
-                value={userInfo.note}
-                onChange={(e) =>
-                  setUserInfo({ ...userInfo, note: e.target.value })
-                }
-              ></textarea>
-            </div>
+            <Input onChangeInput={edit} name="email" id="email" label="Email:" placeholder="Email" cleanUp={clear} />
+            <Textarea onChangeInput={edit} name="note" id="note" label="Napomena:" placeholder="Napomena" cleanUp={clear} />
           </div>
-          <button onClick={() => setSchedule()}>Posalji</button>
+          <Button title='Posalji' onClickFunction={() => { sendSchedule(data); setClear(!clear) }} />
         </div>
         <div className="rightContent">
           <div className="savedInfo">
-            <div className="rightInfo">
-              <p>Ime:</p>
-              <span>{savedInfo.savedName}</span>
-            </div>
-            <div className="rightInfo">
-              <p>Prezime:</p>
-              <span>{savedInfo.savedSurname}</span>
-            </div>
-            <div className="rightInfo">
-              <p>Adresa:</p>
-              <span>{savedInfo.savedAddress}</span>
-            </div>
-            <div className="rightInfo">
-              <p>Telefon:</p>
-              <span>{savedInfo.savedPhone}</span>
-            </div>
-            <div className="rightInfo">
-              <p>Email:</p>
-              <span>{savedInfo.savedEmail}</span>
-            </div>
-            <div className="rightInfo">
-              <p>Napomena:</p>
-              <span>{savedInfo.savedNote}</span>
-            </div>
+            {
+              labels.map((label: string, index) => (
+                <div className="rightInfo">
+                  <p>{label}</p>
+                  <span>{result[index]}</span>
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>

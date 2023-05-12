@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../../Context/UserContext";
-import { useWorker } from "../../Context/WorkerContext";
 import "./HeaderTopInfo.css";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { selectUserName } from "../../redux/user/userSlice";
+import { selectWorkerName, setWorker } from "../../redux/worker/workerSlice";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 
 export default function HeaderTopInfo() {
-  const { user } = useUser() as any;
-  const { worker, setWorkerEvent } = useWorker() as any;
+  const dispatch = useAppDispatch();
+  const userName = useTypedSelector(selectUserName);
+  const workerName = useTypedSelector(selectWorkerName);
 
   const navigate = useNavigate();
 
@@ -16,22 +19,22 @@ export default function HeaderTopInfo() {
       </div>
       <div className="user">
         <p>
-          Korisnik: <span>{user.userName}</span>
+          Korisnik: <span>{userName}</span>
         </p>
       </div>
       <div className="worker">
         <p>
-          Radnik: <span>{worker.workerName}</span>
+          Radnik: <span>{workerName}</span>
         </p>
       </div>
       <div className="logOutButton">
         <button
           onClick={() => {
-            setWorkerEvent({
+            dispatch(setWorker({
               workerName: "",
               workerId: 0,
               workerLogIn: false,
-            });
+            }));
             navigate("/workerlogin");
           }}
         >

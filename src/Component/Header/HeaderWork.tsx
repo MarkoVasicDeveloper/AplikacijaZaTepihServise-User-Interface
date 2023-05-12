@@ -1,12 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useUser } from "../../Context/UserContext";
 import "./HeaderWork.css";
 
 export default function HeaderWork(props: { item: any }) {
   const [showMobileNav, setShowMobileNav] = useState(false);
-
-  const { user } = useUser() as any;
 
   const navigation = useNavigate();
 

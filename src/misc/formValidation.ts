@@ -1,7 +1,7 @@
 export function formValidation (value: string, field: string, dirty: boolean, required?: boolean): ValidationResponse {
   if (value.length === 0 && (required ?? false) && dirty) return new ValidationResponse(false, 'Ovo polje je obavezno!')
 
-  if (field === 'name' && (required ?? false)) {
+  if ((field === 'name' || field === 'surname') && (required ?? false)) {
     if (value.length < 3) return new ValidationResponse(false, 'Korisnicko ime mora imati barem tri karaktera!')
 
     if (value.length > 50) return new ValidationResponse(false, 'Korisnicko ime ne moze biti duze od 50 karaktera!')

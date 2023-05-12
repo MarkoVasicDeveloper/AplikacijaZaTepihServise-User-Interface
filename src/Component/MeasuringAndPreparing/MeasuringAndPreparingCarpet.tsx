@@ -1,4 +1,3 @@
-import ReceptionInfo from "../../Context/ReceptionInfoContext";
 import { WorkProps } from "../../misc/HeaderProps/props";
 import HeaderWork from "../Header/HeaderWork";
 import HeaderTopInfo from "../HeaderTopInfo/HeadetTopInfo";
@@ -13,10 +12,8 @@ export default function MeasuringAndPreparingCarpet() {
       <HeaderTopInfo />
       <h1>Priprema tepiha za isporuku</h1>
       <div className="centralContentMeasuring">
-        <ReceptionInfo>
-          <LeftContentMeasuring />
-          <RightContentMeasuring />
-        </ReceptionInfo>
+        <LeftContentMeasuring />
+        <RightContentMeasuring />
       </div>
     </section>
   );

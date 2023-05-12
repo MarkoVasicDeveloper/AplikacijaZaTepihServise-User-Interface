@@ -7,6 +7,7 @@ import receptionReducer from './reception/receptionSlice';
 import carpetsReducer from './carpets/carpetsSlice';
 import deliveryReducer from './delivery/deliverySlice';
 import billReducer from './bill/billSlice';
+import schedulReducer from './schedul/schedulSlice';
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   reception: receptionReducer,
   carpets: carpetsReducer,
   delivery: deliveryReducer,
-  bill: billReducer
+  bill: billReducer,
+  schedul: schedulReducer
 })
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) =>
