@@ -1,5 +1,5 @@
 import api from "../api/api";
-import { setSchedul } from "../redux/schedul/schedulSlice";
+import { setNewSchedul } from "../redux/schedul/schedulSlice";
 import { selectUserId } from "../redux/user/userSlice";
 import { useAppDispatch } from "./useAppDispatch";
 import { useTypedSelector } from "./useTypedSelector";
@@ -17,7 +17,7 @@ export function useSchedule (): (data: Record<string, any>) => void {
 
     schedule()
       .then(res => {
-        dispatch(setSchedul(res.data));
+        dispatch(setNewSchedul(res.data));
       })
       .catch(() => {})
   };
