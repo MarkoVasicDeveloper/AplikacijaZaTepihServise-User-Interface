@@ -5,7 +5,10 @@
 }
 
 @mixin background ($url) {
+  width: 100%;
   background-image: url($url);
   background-size: cover;
-  background-position: center;
+  background-position: center center;
+  background-color: #00000066;
+  background-blend-mode: darken;
 }

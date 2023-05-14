@@ -3,7 +3,7 @@ import HeaderTopInfo from "../HeaderTopInfo/HeadetTopInfo";
 import "./DeliveryPage.css";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useForDelivery } from "../../hooks/useForDelivery";
-import { selectForDelivery } from "../../redux/delivery/deliverySlice";
+import { ForDelivery, selectForDelivery } from "../../redux/delivery/deliverySlice";
 import { Delivery } from "./delivery/delivery";
 
 export default function DeliveryPage() {
@@ -16,7 +16,7 @@ export default function DeliveryPage() {
       <HeaderTopInfo />
       <div className="deliveryContent">
         <div className="delivery">
-          {forDelivery.map((reception: any, index: number) => (
+          {forDelivery.map((reception: ForDelivery, index: number) => (
             <Delivery key={index} reception={reception} />
           ))}
         </div>
