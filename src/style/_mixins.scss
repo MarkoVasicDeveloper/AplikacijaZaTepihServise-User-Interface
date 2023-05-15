@@ -1,7 +1,7 @@
-@mixin flex-center {
+@mixin flex ($justify: center, $align: center) {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: $justify;
+  align-items: $align;
 }
 
 @mixin background ($url) {

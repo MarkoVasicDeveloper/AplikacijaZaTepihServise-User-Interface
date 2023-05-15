@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import "./LogIn.scss";
+// import "./LogIn.scss";
 import { Input } from "../layout/input/input";
 import { useInputText } from "../../hooks/useInputText";
 import { SocialIcon } from "../layout/socialIcon/socialIcon";
@@ -43,35 +43,39 @@ export default function Login({ workerLogIn }: LoginProps) {
 
   return (
     <section id="logIn">
-      <div className="form-holder">
-        <div className="form-header">
-          <FontAwesomeIcon icon={faArrowLeftLong} onClick={() => navigate("/")} />
+      <div className="container display-flex-center">
+        <div className="row col-12-xs col-9-sm col-6-lg">
+          <div className="form">
+            <div className="form-header">
+              <FontAwesomeIcon icon={faArrowLeftLong} onClick={() => navigate("/")} />
 
-          <h1>{workerLogIn ? 'Radnik' : 'Prijavite se'}</h1>
+              <h1>{workerLogIn ? 'Radnik' : 'Prijavite se'}</h1>
 
-          <div className="relative">
-            <SocialIcon icon={faFacebook} link={"facebook.com"} />
-            <SocialIcon icon={faInstagram} link={"instagram.com"} />
+              <div className="relative">
+                <SocialIcon icon={faFacebook} link={"facebook.com"} />
+                <SocialIcon icon={faInstagram} link={"instagram.com"} />
+              </div>
+            </div>
+
+            <Input icon={workerLogIn ? faSignature : faMailBulk} onChangeInput={edit} name={workerLogIn ? "name" : "email"} placeholder={workerLogIn ? "Ime" : "Email"} id={workerLogIn ? "name" : "email"} cleanUp={workerLogIn} required />
+            <Input icon={faKey} onChangeInput={edit} name={"password"} placeholder="Password" id={"password"} type="password" cleanUp={workerLogIn} required />
+
+            <div className="message-container">
+              <p className={message ? "api-message" : ''}> {message} </p>
+              <p className={logMessage ? "api-message" : ''}> {logMessage} </p>
+            </div>
+
+            <Button title="Login" onClickFunction={(e) => send(e)} type='submit' disabled={disabled} />
+
+            <div className="form-footer">
+              <p>
+                Nemate nalog? &nbsp;
+                <span>
+                  <Link to={workerLogIn ? "/workersingup" : "/singup"}>Sing Up</Link>
+                </span>
+              </p>
+            </div>
           </div>
-        </div>
-
-        <Input icon={workerLogIn ? faSignature : faMailBulk} onChangeInput={edit} name={workerLogIn ? "name" : "email"} placeholder={workerLogIn ? "Ime" : "Email"} id={workerLogIn ? "name" : "email"} cleanUp={workerLogIn} required />
-        <Input icon={faKey} onChangeInput={edit} name={"password"} placeholder="Password" id={"password"} type="password" cleanUp={workerLogIn} required />
-
-        <div className="message-container">
-          <p className={message ? "api-message" : ''}> {message} </p>
-          <p className={logMessage ? "api-message" : ''}> {logMessage} </p>
-        </div>
-
-        <Button title="Login" onClickFunction={(e) => send(e)} type='submit' disabled={disabled} />
-
-        <div className="form-footer">
-          <p>
-            Nemate nalog? &nbsp;
-            <span>
-              <Link to={workerLogIn ? "/workersingup" : "/singup"}>Sing Up</Link>
-            </span>
-          </p>
         </div>
       </div>
     </section>

@@ -1,0 +1,57 @@
+@import '../../mixins';
+@import '../../variables';
+
+#logIn {
+  height: 100vh;
+  @include background('./Img/background-log-in-mini.webp');
+  @include flex;
+
+  .form {
+    border-radius: $border-radius;
+    background-color: $background;
+    padding: $base-pading;
+    width: 100%;
+    
+    & > .form-header {
+      position: relative;
+      @include flex(flex-start);
+  
+      & > .relative {
+        position: absolute;
+        top: -90%;
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+      }
+    }
+  
+    & > .message-container {
+    padding-block: 1rem;
+  
+      & > .api-message {
+        border-radius: $border-radius;
+        background-color: $background;
+        margin: 0 auto;
+        color: $fontColor;
+        font-size: $sm-fontSize;
+        border: 1px solid $secondaryColor;
+        padding: $base-pading * 0.3;
+        text-align: center;
+        box-shadow: 0 0 10px $danger;
+      }
+    }
+  
+    & > .form-footer {
+      padding: $base-pading;
+      border-top: 1px solid #9c9c9c;
+      color: $fontColor;
+      font-family: $secondaryFontFamily;
+      font-size: $md-fontSize;
+      @include flex (center);
+  
+      & > p > span > a {
+        color: $secondFontColor;
+      }
+    }
+  }
+}

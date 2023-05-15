@@ -17,6 +17,11 @@ $layout: flex-start, flex-end, center, space-between, space-around;
   box-sizing: border-box;
 }
 
+.display-flex-center {
+  display: flex;
+  justify-content: center;
+}
+
 .row {
   display: flex;
   flex-flow: row wrap;
