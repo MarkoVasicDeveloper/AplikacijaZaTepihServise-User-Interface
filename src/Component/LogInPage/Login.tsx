@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-// import "./LogIn.scss";
 import { Input } from "../layout/input/input";
 import { useInputText } from "../../hooks/useInputText";
 import { SocialIcon } from "../layout/socialIcon/socialIcon";

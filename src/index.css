@@ -397,6 +397,9 @@
   justify-content: flex-start;
   align-items: center;
 }
+#logIn .form > .form-header > svg:hover {
+  cursor: pointer;
+}
 #logIn .form > .form-header > .relative {
   position: absolute;
   top: -90%;
@@ -430,6 +433,80 @@
 }
 #logIn .form > .form-footer > p > span > a {
   color: #fec400;
+}
+
+.input-container {
+  margin-bottom: 1rem;
+}
+.input-container > label {
+  display: block;
+  color: #fec400;
+  transform: scale(0);
+  font-family: "Nunito Sans", sans-serif;
+  font-style: italic;
+}
+.input-container .input {
+  height: 40px;
+  margin-bottom: 0.2rem;
+  display: flex;
+}
+.input-container .input > span {
+  flex-grow: 1;
+  min-width: 2rem;
+  height: 100%;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+  background-color: #793ea5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  color: #ffffdd;
+}
+.input-container .input > input {
+  flex-grow: 9;
+  height: 100%;
+  padding-left: 1rem;
+  outline: none;
+}
+.input-container .input > .input-invalid {
+  border: 1px solid rgb(223, 69, 84);
+  box-shadow: 0px 0px 10px rgb(223, 69, 84);
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.input-container > .message > .invalid {
+  font-style: italic;
+  color: rgb(223, 69, 84);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.login-input {
+  border: none;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.text-input {
+  border: none;
+  border-bottom: 1px solid #793ea5;
+  border-right: 1px solid #793ea5;
+  border-bottom-right-radius: 8px;
+  background-color: transparent;
+  color: #ffffdd;
+}
+
+@keyframes show {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.show-label {
+  animation: show 1000ms ease forwards;
 }
 
 * {

@@ -1,6 +1,3 @@
-@import '../../../style/defaultStyle.scss';
-@import '../../../style/mixins.scss';
-
 .input-container {
   margin-bottom: 1rem;
 
@@ -8,6 +5,8 @@
     display: block;
     color: $secondaryColor;
     transform: scale(0);
+    font-family: $secondaryFontFamily;
+    font-style: italic;
   }
 
   .input {
@@ -19,46 +18,49 @@
       flex-grow: 1;
       min-width: 2rem;
       height: 100%;
-      border-bottom-left-radius: 5px;
-      border-top-left-radius: 5px;
+      border-bottom-left-radius: $border-radius * 0.4;
+      border-top-left-radius: $border-radius * 0.4;
       background-color: $primaryColor;
       @include flex;
-      font-size: 1rem;
+      font-size: $fontSize;
       color: $fontColor;
     }
 
     & > input {
       flex-grow: 9;
       height: 100%;
-      padding-left: 1rem;
+      padding-left: $base-pading;
       outline: none;
     }
 
     & > .input-invalid {
       border: 1px solid $danger;
       box-shadow: 0px 0px 10px $danger;
+      border-bottom-right-radius: $border-radius * 0.4;
+      border-top-right-radius: $border-radius * 0.4;
+      background-color: transparent;
     }
   }
 
   & > .message > .invalid {
     font-style: italic;
     color: $danger;
-    font-size: .9rem;
+    font-size: $sm-fontSize;
     font-weight: 600;
   }
 }
 
 .login-input {
   border: none;
-  border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px;
+  border-bottom-right-radius: $border-radius * 0.4;
+  border-top-right-radius: $border-radius * 0.4;
 }
 
 .text-input {
   border: none;
   border-bottom: 1px solid $primaryColor;
   border-right: 1px solid $primaryColor;
-  border-bottom-right-radius: 5px;
+  border-bottom-right-radius: $border-radius * 0.4;
   background-color: transparent;
   color: $fontColor;
 }

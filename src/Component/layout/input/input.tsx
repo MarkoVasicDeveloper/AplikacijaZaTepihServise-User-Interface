@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState, useLayoutEffect } from 'react'
-import './input.scss'
 import { useFormValidation } from '../../../hooks/useFormValidation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { type IconDefinition } from '@fortawesome/free-solid-svg-icons'
