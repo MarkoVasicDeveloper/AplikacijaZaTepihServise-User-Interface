@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./LeftContainer.css";
 
 import { selectLogIn } from "../../../redux/user/userSlice";
 
@@ -29,16 +28,29 @@ export default function LeftContainer() {
   useEffect(() => { if (!userLogIn) navigator("/") }, [navigator, userLogIn]);
 
   return (
-    <section id="container">
+    <section id="left-container" className="col-12-sm col-8-md col-5-xl">
       <h3>Podaci o klijentu</h3>
-      <Input onChangeInput={edit} name='name' id='name' placeholder="Ime" label="Ime" cleanUp={clean} required/>
-      <Input onChangeInput={edit} name='surname' id='surname' placeholder="Prezime" label="Prezime" cleanUp={clean} required />
-      <Input onChangeInput={edit} name='address' id='address' placeholder="Adresa" label="Adresa" cleanUp={clean} required />
-      <Input onChangeInput={edit} name='phone' id='phone' placeholder="Telefon" label="Telefon" cleanUp={clean} />
+      <div className="input-group">
+        <div>
+          <Input onChangeInput={edit} name='name' id='name' placeholder="Ime" label="Ime" cleanUp={clean} required/>
+          <Input onChangeInput={edit} name='surname' id='surname' placeholder="Prezime" label="Prezime" cleanUp={clean} required />
+        </div>
+        <div>
+          <Input onChangeInput={edit} name='address' id='address' placeholder="Adresa" label="Adresa" cleanUp={clean} required />
+          <Input onChangeInput={edit} name='phone' id='phone' placeholder="Telefon" label="Telefon" cleanUp={clean} />
+        </div>
+      </div>
 
       <h3>Popis tepiha</h3>
-      <Input onChangeInput={edit} name='carpets' id='carpets' placeholder="Broj tepiha" label="Broj tepiha" cleanUp={clean} />
-      <Input onChangeInput={edit} name='tracks' id='tracks' placeholder="Broj staza" label="Broj staza" cleanUp={clean} />
+
+      <div className="input-group">
+        <div>
+          <Input onChangeInput={edit} name='carpets' id='carpets' placeholder="Broj tepiha" label="Broj tepiha" cleanUp={clean} />
+        </div>
+        <div>
+          <Input onChangeInput={edit} name='tracks' id='tracks' placeholder="Broj staza" label="Broj staza" cleanUp={clean} />
+        </div>
+      </div>
 
       <Textarea name='note' id='note' onChangeInput={edit} label='Napomena' placeholder="Napomena" cleanUp={clean} />
       <div className="sendButton">

@@ -1,0 +1,24 @@
+@import './LeftContainer/leftContainer';
+@import './RightContainer/RightContainer';
+
+#reception {
+  @include background("./Img/hero-bg.webp");
+  padding-top: $base-pading * 3;
+  padding-bottom: $base-pading;
+  color: $fontColor;
+
+  & > h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: $secondFontColor;
+    text-shadow: 1px 1px 1px #333;
+    margin-top: 1rem;
+  }
+
+  & section  {
+    border: 1px solid $primaryColor;
+    border-radius: $border-radius;
+    padding: $base-pading;
+    background-color: $background;
+  }
+}

@@ -1,5 +1,3 @@
-import "./RightContainer.css";
-
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { selectClient } from "../../../redux/client/clientSlice";
 
@@ -8,25 +6,27 @@ import { LastVisitsChart } from "./lastVisitChart/lastVisitsChart";
 export default function RightContainer() {
   const client = useTypedSelector(selectClient);
 
-  const labels = ['Ime: ', 'Prezime: ', 'Adresa: ', 'Telefon: ', 'Broj tepiha: ', 'Broj staza: '];
-  const data = [client.name, client.surname, client.address, client.phone, client.numberOfCarpets, client.numberOfTracks];
+  const labels = ['Ime: ', 'Prezime: ', 'Telefon: ', 'Adresa: ', 'Broj tepiha: ', 'Broj staza: '];
+  const data = [client.name, client.surname, client.phone, client.address,  client.numberOfCarpets, client.numberOfTracks];
 
   return (
-    <section id="container">
+    <section id="right-container" className="col-12-sm col-8-md col-5-xl">
       <div className="savedInformation">
         <div className="headlineInformation">
           <h2>
             ID broj klijenta: <span>{client.lastReception}</span>
           </h2>
         </div>
-        {
-          data.map((data, index) => (
-            <div key={index} className="information">
-              <p>{ labels[index] } </p>
-              <span>{data}</span>
-            </div>
-          ))
-        }
+        <div className="client-info row justify-center">
+          {
+            data.map((data, index) => (
+              <div key={index} className="information col-12-xs col-5-sm col-5-md col-4-xl">
+                <span>{ labels[index] } </span>
+                <span title={data as string}>{data}</span>
+              </div>
+            ))
+          }
+        </div>
       </div>
       <div className="lastVisit">
         <h3>

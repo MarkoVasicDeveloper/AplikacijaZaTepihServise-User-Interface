@@ -49,7 +49,7 @@ export function LastVisitsChart({ userCarpetReceptions }: LastVisitsChartProps) 
   }, [userCarpetReceptions]);
 
   const options = {
-    responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top' as const,
@@ -77,6 +77,8 @@ export function LastVisitsChart({ userCarpetReceptions }: LastVisitsChartProps) 
   };
   
   return (
-    <Bar options={options} data={data} />
+    <div>
+      <Bar options={options} data={data} height="200px" width="200px" />
+    </div>
   )
 }

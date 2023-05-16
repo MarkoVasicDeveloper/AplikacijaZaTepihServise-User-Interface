@@ -42,9 +42,9 @@ export default function Login({ workerLogIn }: LoginProps) {
 
   return (
     <section id="logIn">
-      <div className="container display-flex-center">
-        <div className="row col-12-xs col-9-sm col-6-lg">
-          <div className="form">
+      <div className="container">
+        <div className="row justify-center">
+          <div className="form col-12-xs col-9-sm col-6-md col-4-lg">
             <div className="form-header">
               <FontAwesomeIcon icon={faArrowLeftLong} onClick={() => navigate("/")} />
 
