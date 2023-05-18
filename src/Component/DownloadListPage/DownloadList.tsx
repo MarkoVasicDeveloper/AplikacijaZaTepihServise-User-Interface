@@ -1,13 +1,14 @@
 import Header from "../Header/header";
 import HeaderTopInfo from "../HeaderTopInfo/HeadetTopInfo";
-import "./DownloadList.css";
+import { Button } from "../layout/button/button";
+
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { selectUserCoord } from "../../redux/user/userSlice";
 import { useAllSchedul } from "../../hooks/useAllSchedul";
-import { Schedul, removeSchedule, selectOldSchedul } from "../../redux/schedul/schedulSlice";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { useEditSchedule } from "../../hooks/useEditSchedule";
-import { Button } from "../layout/button/button";
+
+import { selectUserCoord } from "../../redux/user/userSlice";
+import { Schedul, removeSchedule, selectOldSchedul } from "../../redux/schedul/schedulSlice";
 
 export default function DownloadList() {
   const dispatch = useAppDispatch();
@@ -24,24 +25,25 @@ export default function DownloadList() {
     <section id="deliveryPage">
       <Header />
       <HeaderTopInfo />
-      <div className="deliveryContent">
-        <div className="delivery">
+      <h2>Za preuzimanje</h2>
+      <div className="container">
+        <div className="row justify-center">
           {oldSchedule.map((reception: Schedul, index: number) => (
-            <div key={index} className="reception">
-              <div className="infoReception">
+            <div key={index} className="col-12-xs col-12-sm col-8-md section-part">
+              <div className="row justify-center">
                 {
                   labels.map((label: string, index: number) => (
-                    <div key={index} className="info">
-                      <p>{label}</p>
+                    <div key={index} className="information col-12-xs col-8-sm col-6-md">
+                      <span>{label}</span>
                       <span>{reception[data[index] as keyof {}]}</span>
                     </div>
                   ))
                 }
               </div>
-              <div className="buttonReception">
-                <Button title='Treba ti pomoc da nadjes?' onClickFunction={() =>
+              <div className="big-button">
+                <Button default title='Treba ti pomoc da nadjes?' onClickFunction={() =>
                   (window.location.href = `https://www.google.com/maps/dir/${userCoord} ${userCoord}/${reception.address}`)} />
-                <Button 
+                <Button type="submit"
                   title='Isporuka zavrsena?'
                   onClickFunction={
                     () => { 

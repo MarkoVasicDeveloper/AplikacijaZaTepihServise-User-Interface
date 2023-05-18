@@ -56,3 +56,14 @@ h1, h2 {
     font-size: 0.9rem;
   }
 }
+
+.big-button {
+  @include flex ();
+  flex-direction: column;
+  
+  & > button {
+    margin-bottom: 0.3rem;
+    font-size: $fontSize;
+    width: max(220px, 80%);
+  }
+}

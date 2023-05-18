@@ -31,14 +31,14 @@ export function Delivery({ reception }: DeliveryProps) {
       <div className="row justify-center">
         {
           labels.map((label: string, index: number) => (
-            <div key={index} className="info col-12-xs col-6-sm col-5-xl">
+            <div key={index} className="information col-12-xs col-6-sm col-5-xl">
               <span>{label}</span>
               <span>{data[index]}</span>
             </div>
           ))
         }
       </div> 
-      <div className="deliveryButton">
+      <div className="big-button">
         <Button default title='Treba ti pomoc da nadjes?' onClickFunction={() =>
             (window.location.href = `https://www.google.com/maps/dir/${userCoord.lat} ${userCoord.lng}/${reception.clients.address}`)
         } />
