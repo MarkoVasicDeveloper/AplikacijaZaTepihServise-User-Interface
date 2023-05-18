@@ -651,7 +651,7 @@
 }
 #deliveryPage .reception > p span {
   color: #fec400;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 #deliveryPage .reception .info {
   display: flex;
@@ -671,13 +671,28 @@
 }
 #deliveryPage .reception .deliveryButton {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
-#deliveryPage .reception .deliveryButton button {
-  font-size: 1rem;
+#deliveryPage .reception .deliveryButton > button {
+  font-size: 1.3rem;
   width: max(250px, 80%);
+}
+
+#scheduling {
+  min-height: 100vh;
+  background-image: url("./Img/hero-bg.webp");
+  background-size: cover;
+  background-position: center center;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-blend-mode: darken;
+  padding-bottom: 1rem;
+  padding-top: 3rem;
+  color: #ffffdd;
+}
+#scheduling h3 {
+  text-align: center;
 }
 
 * {

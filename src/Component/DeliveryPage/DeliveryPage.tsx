@@ -1,9 +1,11 @@
 import Header from "../Header/header";
 import HeaderTopInfo from "../HeaderTopInfo/HeadetTopInfo";
-import "./DeliveryPage.css";
+
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useForDelivery } from "../../hooks/useForDelivery";
+
 import { ForDelivery, selectForDelivery } from "../../redux/delivery/deliverySlice";
+
 import { Delivery } from "./delivery/delivery";
 
 export default function DeliveryPage() {

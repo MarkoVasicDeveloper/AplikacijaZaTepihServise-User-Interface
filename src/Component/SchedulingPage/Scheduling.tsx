@@ -1,14 +1,17 @@
 import { useState } from "react";
+
 import Header from "../Header/header";
 import HeaderTopInfo from "../HeaderTopInfo/HeadetTopInfo";
-import "./Scheduling.css";
+
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useInputText } from "../../hooks/useInputText";
-import { Input } from "../layout/input/input";
-import { selectLastSchedul } from "../../redux/schedul/schedulSlice";
-import { Textarea } from "../layout/textarea/textarea";
 import { useSchedule } from "../../hooks/useSchedule";
+
+import { Textarea } from "../layout/textarea/textarea";
+import { Input } from "../layout/input/input";
 import { Button } from "../layout/button/button";
+
+import { selectLastSchedul } from "../../redux/schedul/schedulSlice";
 
 export default function Scheduling() {
   const schedule = useTypedSelector(selectLastSchedul);
@@ -25,11 +28,11 @@ export default function Scheduling() {
     <section id="scheduling">
       <Header />
       <HeaderTopInfo />
-      <h1>Zakazivanje preuzimanja</h1>
-      <div className="schedulingContent">
-        <div className="leftContent">
-          <h3>Obavezne informacije</h3>
-          <div className="informationSheduling">
+      <h2>Zakazivanje preuzimanja</h2>
+      <div className="container">
+        <div className="row justify-center">
+          <div className="col-12-xs col-8-sm col-5-md section-part">
+            <h3>Obavezne informacije</h3>
             <Input onChangeInput={edit} name="name" id="name" label="Ime:" placeholder="Ime" cleanUp={clear} required/>
             <Input onChangeInput={edit} name="surname" id="surname" label="Prezime:" placeholder="Prezime" cleanUp={clear} required/>
             <Input onChangeInput={edit} name="address" id="address" label="Adresa:" placeholder="Adresa" cleanUp={clear} required/>
@@ -38,14 +41,12 @@ export default function Scheduling() {
             <h3>Ostale informacije</h3>
             <Input onChangeInput={edit} name="email" id="email" label="Email:" placeholder="Email" cleanUp={clear} />
             <Textarea onChangeInput={edit} name="note" id="note" label="Napomena:" placeholder="Napomena" cleanUp={clear} />
+            <Button type="submit" title='Posalji' onClickFunction={() => { sendSchedule(data); setClear(!clear) }} />
           </div>
-          <Button title='Posalji' onClickFunction={() => { sendSchedule(data); setClear(!clear) }} />
-        </div>
-        <div className="rightContent">
-          <div className="savedInfo">
+          <div className="col-12-xs col-8-sm col-5-md section-part">
             {
               labels.map((label: string, index) => (
-                <div className="rightInfo">
+                <div key={index} className="information">
                   <p>{label}</p>
                   <span>{result[index]}</span>
                 </div>
