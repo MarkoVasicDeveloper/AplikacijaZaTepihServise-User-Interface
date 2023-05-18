@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./LeftContentMeasuring.css";
 
 import DatePicker from "react-date-picker";
 
@@ -25,23 +24,25 @@ export default function LeftContentMeasuring() {
   const displayData = [client.name, client.surname, client.address, client.phone, client.numberOfCarpets, client.numberOfTracks, client.timeAt, worker, client.note];
 
   return (
-    <section id="leftContentMeasuring">
+    <section id="leftContentMeasuring" className="col-12-sm col-8-md col-5-xl section-part">
       <div className="carpetId">
         <label htmlFor="receptionUserId">
           Unesite <span>ID</span> broj tepiha:
         </label>
-        <Input onChangeInput={edit} name={"receptionUserId"} id={"receptionUserId"} onEnter={() => getReception(data.receptionUserId, date)} />
-        <Button title="Posalji" onClickFunction={() => getReception(data.receptionUserId, date) } />
+        <Input onChangeInput={edit} name={"receptionUserId"} id={"receptionUserId"} onEnter={() => getReception(data.receptionUserId, date)} label=" " />
+        <Button type="submit" title="Posalji" onClickFunction={() => getReception(data.receptionUserId, date) } />
       </div>
       <div className="userInfo">
-        {
-          displayData.map((data, index) => (
-            <div key={index} className="info">
-              <label>{labels[index]}</label>
-              <p>{data}</p>
-            </div>
-          ))
-        }
+        <div className="row justify-center">
+          {
+            displayData.map((data, index) => (
+              <div key={index} className="information col-12-xs col-5-sm col-5-md col-4-xl">
+                <span>{labels[index]}</span>
+                <span>{index === 6 ? data : data}</span>
+              </div>
+            ))
+          }
+        </div>
 
         <div className="date">
           <label htmlFor="deliveryDate">Dan isporuke je:</label>

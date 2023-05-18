@@ -10,14 +10,14 @@ export default function RightContainer() {
   const data = [client.name, client.surname, client.phone, client.address,  client.numberOfCarpets, client.numberOfTracks];
 
   return (
-    <section id="right-container" className="col-12-sm col-8-md col-5-xl">
+    <section id="right-container" className="col-12-sm col-8-md col-5-xl section-part">
       <div className="savedInformation">
         <div className="headlineInformation">
-          <h2>
+          <h3>
             ID broj klijenta: <span>{client.lastReception}</span>
-          </h2>
+          </h3>
         </div>
-        <div className="client-info row justify-center">
+        <div className="row justify-center">
           {
             data.map((data, index) => (
               <div key={index} className="information col-12-xs col-5-sm col-5-md col-4-xl">

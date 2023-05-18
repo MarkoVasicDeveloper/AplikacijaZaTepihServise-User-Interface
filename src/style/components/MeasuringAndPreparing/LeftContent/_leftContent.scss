@@ -1,0 +1,53 @@
+#leftContentMeasuring {
+  .carpetId {
+    @include flex (space-evenly);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    border-bottom: 1px solid #ffffff66;
+    max-width: 300px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  
+    & > label > span {
+      color: $secondaryColor;
+    }
+  
+    & input {
+      width: 60px;
+      text-align: center;
+      margin-top: 0.5rem;
+      border-left: 1px solid $primaryColor;
+      border-top: 1px solid $primaryColor;
+      border-top-left-radius: $border-radius * 0.4;
+      font-size: $md-fontSize;
+    }
+  }
+  
+  & .date {
+    @include flex (space-evenly);
+    margin-block: 1rem;
+
+    & .react-date-picker {
+      & button{
+        & svg {
+          stroke: $primaryColor;
+        }
+      }
+    }
+  }
+
+  & > .forPay {
+    width: 100%;
+    height: 5rem;
+    padding: $base-padding;
+
+    & > p {
+      float: right;
+
+      & > span {
+        color: $secondaryColor;
+        font-size: $xl-fontSize;
+      }
+    }
+  }
+}

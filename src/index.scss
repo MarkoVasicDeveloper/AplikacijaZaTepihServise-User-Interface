@@ -3,6 +3,7 @@
 
 @import './style/components/Input/input';
 @import './style/components/CarpetReceptions/carpetReceptions';
+@import './style/components/MeasuringAndPreparing/measuringAndPreparing';
 
 * {
   margin: 0;
@@ -16,4 +17,38 @@ body {
 
 svg {
   color: $fontColor;
+}
+
+.section-part  {
+  border: 1px solid $primaryColor;
+  border-radius: $border-radius;
+  padding: $base-pading;
+  background-color: $background;
+}
+
+h1, h2 {
+  text-align: center;
+  text-transform: uppercase;
+  color: $secondFontColor;
+  margin-top: 1rem;
+  text-shadow: 2px 2px 2px #222;
+}
+
+.information {
+  padding: 0.3rem;
+  font-family: $secondaryFontFamily;
+  font-weight: 600;
+
+  & > :first-child {
+    display: block;
+    font-style: italic;
+    color: $secondaryColor;
+    font-weight: 300;
+    margin-bottom: 0.3rem;
+  }
+
+  & > :last-child {
+    margin-left: 1rem;
+    font-size: 0.9rem;
+  }
 }

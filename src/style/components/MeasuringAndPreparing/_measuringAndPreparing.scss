@@ -1,0 +1,6 @@
+@import './LeftContent/leftContent';
+@import './RightContent/rightContent';
+
+#measuringAndPreparingCarpet {
+  @include background("./Img/hero-bg.webp");
+}

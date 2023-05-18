@@ -2,6 +2,7 @@
   width: -moz-max-content;
   width: max-content;
   margin-block: 1rem;
+  margin-right: 0.5rem;
   background-color: #793ea5;
   border: none;
   font-size: 1.2rem;
@@ -18,6 +19,7 @@
   font-weight: 600;
   padding: 0.3rem;
   margin-block: 1rem;
+  margin-right: 0.5rem;
   background-color: #fec400;
   border: 1px solid #793ea5;
   cursor: no-drop;
@@ -31,6 +33,7 @@
   font-weight: 600;
   font-size: 1.2rem;
   margin-block: 1rem;
+  margin-right: 0.5rem;
   color: #fec400;
   border: 1px solid #fec400;
   cursor: pointer;

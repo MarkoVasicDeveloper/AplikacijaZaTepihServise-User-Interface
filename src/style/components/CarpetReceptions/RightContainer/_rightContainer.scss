@@ -1,36 +1,17 @@
 #right-container {
   .savedInformation {
-    & > .headlineInformation > h2 {
+    & > .headlineInformation > h3 {
       text-align: center;
-      padding-bottom: 0.5rem;
+      padding-bottom: $base-padding * 0.5;
       margin-bottom: 2rem;
       border-bottom: 1px solid $fontColor;
-    }
-  
-    & > .client-info > .information {
-      padding: 0.3rem;
-      font-family: $secondaryFontFamily;
-      font-weight: 600;
-  
-      & > :first-child {
-        display: block;
-        font-style: italic;
-        color: $secondaryColor;
-        font-weight: 300;
-        margin-bottom: 0.3rem;
-      }
-  
-      & > :last-child {
-        margin-left: 1rem;
-        font-size: 0.9rem;
-      }
     }
   }
 
   & > .lastVisit {
     border: 1px solid $secondaryColor;
-    border-radius: 5px;
-    padding: 1rem 0.2rem;
+    border-radius: $border-radius * 0.5;
+    padding: $base-padding $base-padding * 0.2;
 
     & > h3 {
       text-align: center;

@@ -1,7 +1,6 @@
 import Header from "../Header/header";
 import HeaderTopInfo from "../HeaderTopInfo/HeadetTopInfo";
 import LeftContentMeasuring from "./LeftContainer/LeftContentMeasuring";
-import "./MeasuringAndPreparingCarpet.css";
 import RightContentMeasuring from "./RightContainer/RightContentMeasuring";
 
 export default function MeasuringAndPreparingCarpet() {
@@ -10,9 +9,11 @@ export default function MeasuringAndPreparingCarpet() {
       <Header />
       <HeaderTopInfo />
       <h1>Priprema tepiha za isporuku</h1>
-      <div className="centralContentMeasuring">
-        <LeftContentMeasuring />
-        <RightContentMeasuring />
+      <div className="container">
+        <div className="row justify-center">
+          <LeftContentMeasuring />
+          <RightContentMeasuring />
+        </div>
       </div>
     </section>
   );

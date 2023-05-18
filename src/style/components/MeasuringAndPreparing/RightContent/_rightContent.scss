@@ -1,0 +1,16 @@
+#rightContentMeasuring {
+  .carpetDiv {
+    border: 1px solid $secondaryColor;
+    border-radius: $border-radius;
+    padding: $base-padding;
+
+    p {
+      margin-bottom: 0.3rem;
+
+      span {
+        color: $secondaryColor;
+        font-style: italic;
+      }
+    } 
+  }
+}

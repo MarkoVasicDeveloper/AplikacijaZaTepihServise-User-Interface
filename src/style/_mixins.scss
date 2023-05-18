@@ -5,10 +5,13 @@
 }
 
 @mixin background ($url) {
-  width: 100%;
+  min-height: 100vh;
   background-image: url($url);
   background-size: cover;
   background-position: center center;
   background-color: #000000cc;
   background-blend-mode: darken;
+  padding-bottom: $base-pading;
+  padding-top: $base-pading * 3;
+  color: $fontColor;
 }

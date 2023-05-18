@@ -28,7 +28,7 @@ export default function LeftContainer() {
   useEffect(() => { if (!userLogIn) navigator("/") }, [navigator, userLogIn]);
 
   return (
-    <section id="left-container" className="col-12-sm col-8-md col-5-xl">
+    <section id="left-container" className="col-12-sm col-8-md col-5-xl section-part">
       <h3>Podaci o klijentu</h3>
       <div className="input-group">
         <div>
