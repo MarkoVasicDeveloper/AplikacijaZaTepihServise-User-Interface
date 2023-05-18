@@ -1,0 +1,44 @@
+#deliveryPage {
+  @include background("./Img/hero-bg.webp");
+
+  .reception { 
+    & > p {
+      text-align: center;
+      margin-bottom: 1rem;
+
+      span {
+        color: $secondaryColor;
+        font-size: $md-fontSize;
+      }
+    }
+
+    .info {
+      display: flex;
+      flex-wrap: wrap;
+      border-bottom: 1px solid $primaryColor;
+      border-radius: $border-radius * 0.5;
+      padding: $base-padding * 0.2;
+  
+      & span:first-child {
+        width: 100%;
+        font-family: $secondaryFontFamily;
+      }
+
+      & span:last-child {
+        margin-left: 1rem;
+        color: $secondaryColor;
+        font-style: italic;
+      }
+    }
+    
+    .deliveryButton {
+      @include flex ();
+      flex-direction: column;
+      
+      & > button {
+        font-size: $md-fontSize;
+        width: max(250px, 80%);
+      }
+    }
+  }
+}

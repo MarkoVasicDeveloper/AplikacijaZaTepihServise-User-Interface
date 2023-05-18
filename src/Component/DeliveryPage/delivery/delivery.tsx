@@ -13,10 +13,9 @@ export function Delivery({ reception }: DeliveryProps) {
   const setDelivered = useDelivered();
   const userCoord = useTypedSelector(selectUserCoord);
 
-  const labels = ['ID broj: ', 'Ime:', 'Prezime:', 'Adresa:', 'Telefon:', 'Tepisi:', 'Staze:', 'Racun:'];
+  const labels = ['Ime:', 'Prezime:', 'Adresa:', 'Telefon:', 'Tepisi:', 'Staze:', 'Racun:'];
   const client = reception.clients;
-  const data = [
-    reception.carpetReceptionUser, 
+  const data = [ 
     client.name, 
     client.surname, 
     client.address, 
@@ -27,22 +26,23 @@ export function Delivery({ reception }: DeliveryProps) {
   ];
   
   return (
-    <div className="reception">
-      <div className="infoReception flex">
+    <div className="reception col-12-sm col-8-md col-5-xl section-part">
+      <p>ID broj: <span>{reception.carpetReceptionUser}</span></p>
+      <div className="row justify-center">
         {
           labels.map((label: string, index: number) => (
-            <div key={index} className="info" style={label === 'Tepisi:' ? {marginTop: '1rem'} : {}}>
-              <p>{label}</p>
+            <div key={index} className="info col-12-xs col-6-sm col-5-xl">
+              <span>{label}</span>
               <span>{data[index]}</span>
             </div>
           ))
         }
       </div> 
-      <div className="buttonReception">
-        <Button title='Treba ti pomoc da nadjes?' onClickFunction={() =>
+      <div className="deliveryButton">
+        <Button default title='Treba ti pomoc da nadjes?' onClickFunction={() =>
             (window.location.href = `https://www.google.com/maps/dir/${userCoord.lat} ${userCoord.lng}/${reception.clients.address}`)
         } />
-        <Button title='Isporuka zavrsena?' onClickFunction={() => { setDelivered(reception.carpetReceptionUser) }} />
+        <Button type="submit" title='Isporuka zavrsena?' onClickFunction={() => { setDelivered(reception.carpetReceptionUser) }} />
       </div>
     </div>
   )

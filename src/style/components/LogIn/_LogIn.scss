@@ -9,7 +9,7 @@
   .form {
     border-radius: $border-radius;
     background-color: $background;
-    padding: $base-pading;
+    padding: $base-padding;
     
     & > .form-header {
       position: relative;
@@ -38,14 +38,14 @@
         color: $fontColor;
         font-size: $sm-fontSize;
         border: 1px solid $secondaryColor;
-        padding: $base-pading * 0.3;
+        padding: $base-padding * 0.3;
         text-align: center;
         box-shadow: 0 0 10px $danger;
       }
     }
   
     & > .form-footer {
-      padding: $base-pading;
+      padding: $base-padding;
       border-top: 1px solid #9c9c9c;
       color: $fontColor;
       font-family: $secondaryFontFamily;

@@ -528,7 +528,7 @@
 #left-container .sendButton > button {
   float: right;
   margin: 1rem 3rem;
-  border-radius: 2px;
+  border-radius: 4px;
   padding: 0.3rem;
   width: max(150px, 30%);
 }
@@ -541,7 +541,7 @@
 }
 #right-container > .lastVisit {
   border: 1px solid #fec400;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 1rem 0.2rem;
 }
 #right-container > .lastVisit > h3 {
@@ -585,7 +585,7 @@
   border-left: 1px solid #793ea5;
   border-top: 1px solid #793ea5;
   border-top-left-radius: 8px;
-  font-size: md-fontSize;
+  font-size: 1.3rem;
 }
 #leftContentMeasuring .date {
   display: flex;
@@ -634,6 +634,52 @@
   color: #ffffdd;
 }
 
+#deliveryPage {
+  min-height: 100vh;
+  background-image: url("./Img/hero-bg.webp");
+  background-size: cover;
+  background-position: center center;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-blend-mode: darken;
+  padding-bottom: 1rem;
+  padding-top: 3rem;
+  color: #ffffdd;
+}
+#deliveryPage .reception > p {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+#deliveryPage .reception > p span {
+  color: #fec400;
+  font-size: 1.2rem;
+}
+#deliveryPage .reception .info {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #793ea5;
+  border-radius: 10px;
+  padding: 0.2rem;
+}
+#deliveryPage .reception .info span:first-child {
+  width: 100%;
+  font-family: "Nunito Sans", sans-serif;
+}
+#deliveryPage .reception .info span:last-child {
+  margin-left: 1rem;
+  color: #fec400;
+  font-style: italic;
+}
+#deliveryPage .reception .deliveryButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#deliveryPage .reception .deliveryButton button {
+  font-size: 1rem;
+  width: max(250px, 80%);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -659,7 +705,7 @@ h1, h2 {
   text-align: center;
   text-transform: uppercase;
   color: #fec400;
-  margin-top: 1rem;
+  margin: 1rem;
   text-shadow: 2px 2px 2px #222;
 }
 
@@ -667,6 +713,8 @@ h1, h2 {
   padding: 0.3rem;
   font-family: "Nunito Sans", sans-serif;
   font-weight: 600;
+  border-bottom: 1px solid #793ea5;
+  border-radius: 10px;
 }
 .information > :first-child {
   display: block;

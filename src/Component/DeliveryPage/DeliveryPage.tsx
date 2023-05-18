@@ -14,8 +14,9 @@ export default function DeliveryPage() {
     <section id="deliveryPage">
       <Header />
       <HeaderTopInfo />
-      <div className="deliveryContent">
-        <div className="delivery">
+      <h2>Isporuka</h2>
+      <div className="container">
+        <div className="row justify-center">
           {forDelivery.map((reception: ForDelivery, index: number) => (
             <Delivery key={index} reception={reception} />
           ))}

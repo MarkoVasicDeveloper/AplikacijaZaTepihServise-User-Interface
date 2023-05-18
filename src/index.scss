@@ -4,6 +4,7 @@
 @import './style/components/Input/input';
 @import './style/components/CarpetReceptions/carpetReceptions';
 @import './style/components/MeasuringAndPreparing/measuringAndPreparing';
+@import './style/components/Delivery/delivery';
 
 * {
   margin: 0;
@@ -22,7 +23,7 @@ svg {
 .section-part  {
   border: 1px solid $primaryColor;
   border-radius: $border-radius;
-  padding: $base-pading;
+  padding: $base-padding;
   background-color: $background;
 }
 
@@ -30,7 +31,7 @@ h1, h2 {
   text-align: center;
   text-transform: uppercase;
   color: $secondFontColor;
-  margin-top: 1rem;
+  margin: 1rem;
   text-shadow: 2px 2px 2px #222;
 }
 
@@ -38,6 +39,8 @@ h1, h2 {
   padding: 0.3rem;
   font-family: $secondaryFontFamily;
   font-weight: 600;
+  border-bottom: 1px solid #793ea5;
+  border-radius: 10px;
 
   & > :first-child {
     display: block;
