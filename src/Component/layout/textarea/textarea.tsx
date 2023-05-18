@@ -1,7 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 
-import './textarea.scss';
-
 interface TextareaProps {
   name: string
   id: string

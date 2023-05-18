@@ -1,5 +1,4 @@
-import { type ReactElement, useLayoutEffect, useState } from 'react'
-import './button.scss'
+import { type ReactElement, useLayoutEffect, useState } from 'react';
 
 interface ButtonProps {
   type?: 'submit' | 'button'
