@@ -45,6 +45,12 @@
   cursor: pointer;
 }
 
+@media (max-width: 868px) {
+  .washer-logo {
+    display: none;
+  }
+}
+
 @media (max-width: 650px) {
   .user {
     display: none;

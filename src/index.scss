@@ -1,17 +1,21 @@
 @import './style/grid.scss';
 @import './style/components/Layout/LogIn/LogIn';
 @import './style/components/Layout/Button/button.scss';
+@import './style/components/Layout/Textarea/textarea';
 
 @import './style/components/Input/input';
 @import './style/components/CarpetReceptions/carpetReceptions';
 @import './style/components/MeasuringAndPreparing/measuringAndPreparing';
 @import './style/components/Delivery/delivery';
 @import './style/components/Scheduling/sheduling';
+@import './style/components/Modal/modal';
+@import './style/components/Header/header';
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 body {

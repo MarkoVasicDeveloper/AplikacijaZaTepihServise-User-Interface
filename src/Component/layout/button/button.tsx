@@ -1,13 +1,16 @@
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type ReactElement, useLayoutEffect, useState } from 'react';
 
 interface ButtonProps {
   type?: 'submit' | 'button'
-  title: string
+  title?: string
   disabled?: boolean | undefined
   onClickFunction: ((param: any) => void) | ((param: any) => Promise<void>)
   implementClass?: string
   titleFusnote?: string
   default?: boolean
+  icon?: IconDefinition
 }
 
 export function Button(data: ButtonProps): ReactElement {
@@ -26,6 +29,6 @@ export function Button(data: ButtonProps): ReactElement {
       disabled={data.disabled}
       onClick={data.onClickFunction}
       title={data.titleFusnote}
-    >{data.title}</button>
+    >{data.icon ? <FontAwesomeIcon icon={data.icon} /> : data.title}</button>
   )
 }
