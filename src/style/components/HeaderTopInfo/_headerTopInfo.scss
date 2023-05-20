@@ -1,0 +1,53 @@
+.header-reception {
+  min-height: 3rem;
+  border-bottom: 1px solid #ffffff55;
+  @include flex(space-between);
+  padding-inline: $base-padding * 0.2;
+
+  & .washer-logo {
+    font-size: $md-fontSize;
+  }
+
+  & span {
+    cursor: pointer;
+  }
+}
+
+.info-mobile {
+  height: 100%;
+  @include flex;
+  flex-direction: column;
+
+  & > div {
+    border-bottom: 1px solid $primaryColor;
+    border-radius: $border-radius;
+    padding: $base-padding * 0.5 $base-padding;
+    margin-bottom: 1rem;
+    width: min(90%, 350px);
+    transform: translateX(200%);
+  }
+
+  & div {
+    & p {
+      color: $fontColor;
+      font-size: $fontSize;
+      font-weight: 300;
+    }
+    & span {
+      color: $primaryColor;
+      font-style: italic;
+      margin: 0.5rem 0 0 1rem;
+      font-size: $md-fontSize;
+    }
+  }
+}
+
+@media (max-width: 868px) {
+  .header-reception {
+    justify-content: center;
+  }
+
+  .washer-logo {
+    display: none;
+  }
+}

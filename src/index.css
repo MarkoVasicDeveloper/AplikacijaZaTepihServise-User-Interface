@@ -911,6 +911,56 @@
     transform: translateX(0%);
   }
 }
+.header-reception {
+  min-height: 3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3333333333);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 0.2rem;
+}
+.header-reception .washer-logo {
+  font-size: 1.3rem;
+}
+.header-reception span {
+  cursor: pointer;
+}
+
+.info-mobile {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.info-mobile > div {
+  border-bottom: 1px solid #793ea5;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  width: min(90%, 350px);
+  transform: translateX(200%);
+}
+.info-mobile div p {
+  color: #ffffdd;
+  font-size: 1rem;
+  font-weight: 300;
+}
+.info-mobile div span {
+  color: #793ea5;
+  font-style: italic;
+  margin: 0.5rem 0 0 1rem;
+  font-size: 1.3rem;
+}
+
+@media (max-width: 868px) {
+  .header-reception {
+    justify-content: center;
+  }
+  .washer-logo {
+    display: none;
+  }
+}
 * {
   margin: 0;
   padding: 0;
