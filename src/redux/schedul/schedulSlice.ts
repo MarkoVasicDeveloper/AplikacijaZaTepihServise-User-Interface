@@ -13,8 +13,7 @@ export interface Schedul {
   timeAt: string
 }
 
-const initialState = {
-  newSchedul: [{
+const initialState = [{
     name: '',
     surname: '',
     address: '',
@@ -23,31 +22,37 @@ const initialState = {
     note: '',
     isSheduling: 0,
     timeAt: ''
-  }],
-  oldSchedul: [{}]
-} as {newSchedul: Schedul[], oldSchedul: Schedul[]};
+  }] as Schedul[];
 
 const schedulSlice = createSlice({
   name: 'schedul',
   initialState,
   reducers: {
-    setNewSchedul (state, action) {
-      state.newSchedul.push(action.payload);
+    setSchedul (state, action) {
+      if (Array.isArray(action.payload)) {
+        state = [initialState, ...action.payload];
+        return state;
+      }
+      state = [initialState, action.payload];
+    },
+    addSchedul (state, action) {
+      if (Array.isArray(action.payload)) {
+        state = [...state, ...action.payload];
+        return state;
+      }
+      state.push(action.payload);
       return state;
     },
-    setOldSchedule (state, action) {
-      state.oldSchedul = action.payload;
-    },
     removeSchedule (state, action) {
-      state.oldSchedul.filter((schedul: Schedul) => schedul.schedulingCarpetId !== action.payload);
+      state = state.filter((schedul: Schedul) => schedul.schedulingCarpetId !== action.payload);
       return state;
     }
   }
 });
 
-export const { setNewSchedul, setOldSchedule, removeSchedule } = schedulSlice.actions;
+export const { setSchedul, addSchedul, removeSchedule } = schedulSlice.actions;
 
 export default schedulSlice.reducer;
 
-export const selectLastSchedul = (state: RootState) => state.schedul.newSchedul.slice(-1)[0];
-export const selectOldSchedul = (state: RootState) => state.schedul.oldSchedul;
+export const selectLastSchedul = (state: RootState) => state.schedul.slice(-1)[0];
+export const selectSchedul = (state: RootState) => state.schedul.slice(1);

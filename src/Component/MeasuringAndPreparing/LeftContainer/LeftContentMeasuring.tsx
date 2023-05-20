@@ -38,14 +38,14 @@ export default function LeftContentMeasuring() {
             displayData.map((data, index) => (
               <div key={index} className="information col-12-xs col-5-sm col-5-md col-4-xl">
                 <span>{labels[index]}</span>
-                <span>{index === 6 ? data : data}</span>
+                <span>{index === 6 && data === 'string' ? data.slice(0, -5).replace("T", " ") : data}</span>
               </div>
             ))
           }
         </div>
 
-        <div className="date">
-          <label htmlFor="deliveryDate">Dan isporuke je:</label>
+        <div className="date row justify-center">
+          <label htmlFor="deliveryDate" className="col-12-xs col-5-sm col-5-md col-4-xl">Dan isporuke je:</label>
           <DatePicker
             name="deliveryDate"
             value={date}

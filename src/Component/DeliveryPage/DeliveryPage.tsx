@@ -19,9 +19,13 @@ export default function DeliveryPage() {
       <h2>Isporuka</h2>
       <div className="container">
         <div className="row justify-center">
-          {forDelivery.map((reception: ForDelivery, index: number) => (
-            <Delivery key={index} reception={reception} />
-          ))}
+          {
+          forDelivery.length > 0 ?
+            forDelivery.map((reception: ForDelivery, index: number) => (
+              <Delivery key={index} reception={reception} />
+            ))
+          : <h3>Svi tepisi isporuceni!</h3>
+          }
         </div>
       </div>
     </section>

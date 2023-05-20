@@ -3,7 +3,7 @@ import api from "../api/api";
 import { useTypedSelector } from "./useTypedSelector";
 import { selectUserId } from "../redux/user/userSlice";
 import { useAppDispatch } from "./useAppDispatch";
-import { setOldSchedule } from "../redux/schedul/schedulSlice";
+import { setSchedul } from "../redux/schedul/schedulSlice";
 
 export function useAllSchedul () {
   const dispatch = useAppDispatch();
@@ -16,7 +16,8 @@ export function useAllSchedul () {
         {}
       );
       schedul()
-        .then(res => {dispatch(setOldSchedule(res.data))})
+        .then(res => {
+          dispatch(setSchedul(res.data))})
         .catch(() => {})
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

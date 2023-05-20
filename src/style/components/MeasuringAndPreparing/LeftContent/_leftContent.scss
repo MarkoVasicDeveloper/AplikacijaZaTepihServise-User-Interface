@@ -24,7 +24,6 @@
   }
   
   & .date {
-    @include flex (space-evenly);
     margin-block: 1rem;
 
     & .react-date-picker {
