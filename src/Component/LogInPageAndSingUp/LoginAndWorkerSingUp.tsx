@@ -11,15 +11,18 @@ import { SocialIcon } from "../layout/socialIcon/socialIcon";
 import { Button } from "../layout/button/button";
 import { useLoginCheck } from "../../hooks/useLoginCheck";
 import { useWorkerLoginCheck } from "../../hooks/useWorkerLoginCheck";
+import { useWorkerSingUp } from "../../hooks/useWorkerSingUp";
 
 interface LoginProps {
-  workerLogIn: boolean
+  workerLogIn?: boolean
+  workerSingUp?: boolean
 }
 
-export default function Login({ workerLogIn }: LoginProps) {
+export default function LoginAndWorkerSingUp({ workerLogIn, workerSingUp }: LoginProps) {
   const { data, edit } = useInputText({});
   const { sendData, message } = useLoginCheck(data);
   const { sendWorkerData, logMessage } = useWorkerLoginCheck(data);
+  const { addWorker } = useWorkerSingUp();
 
   const [disabled, setDisabled] = useState(true);
 
@@ -32,11 +35,13 @@ export default function Login({ workerLogIn }: LoginProps) {
   }, [data, workerLogIn]);
 
   function send(e: React.ChangeEvent) {
-    if (!workerLogIn) {
+    if (!workerLogIn && !workerSingUp) {
       sendData(data, e);
       edit('password');
       return;
     };
+
+    if (workerSingUp) return addWorker(data);
     sendWorkerData(data, e);
   }
 
@@ -48,7 +53,7 @@ export default function Login({ workerLogIn }: LoginProps) {
             <div className="form-header">
               <FontAwesomeIcon icon={faArrowLeftLong} onClick={() => navigate("/")} />
 
-              <h1>{workerLogIn ? 'Radnik' : 'Prijavite se'}</h1>
+              <h2>{workerSingUp ? 'Prijava radnika' : workerLogIn ? 'Radnik' : 'Prijavite se'}</h2>
 
               <div className="relative">
                 <SocialIcon icon={faFacebook} link={"facebook.com"} />
@@ -56,7 +61,7 @@ export default function Login({ workerLogIn }: LoginProps) {
               </div>
             </div>
 
-            <Input icon={workerLogIn ? faSignature : faMailBulk} onChangeInput={edit} name={workerLogIn ? "name" : "email"} placeholder={workerLogIn ? "Ime" : "Email"} id={workerLogIn ? "name" : "email"} cleanUp={workerLogIn} required />
+            <Input icon={workerLogIn || workerSingUp ? faSignature : faMailBulk} onChangeInput={edit} name={workerLogIn || workerSingUp ? "name" : "email"} placeholder={workerLogIn || workerSingUp ? "Ime" : "Email"} id={workerLogIn || workerSingUp ? "name" : "email"} cleanUp={workerLogIn || workerSingUp} required />
             <Input icon={faKey} onChangeInput={edit} name={"password"} placeholder="Password" id={"password"} type="password" cleanUp={workerLogIn} required />
 
             <div className="message-container">
@@ -64,7 +69,7 @@ export default function Login({ workerLogIn }: LoginProps) {
               <p className={logMessage ? "api-message" : ''}> {logMessage} </p>
             </div>
 
-            <Button title="Login" onClickFunction={(e) => send(e)} type='submit' disabled={disabled} />
+            <Button title={workerSingUp ? 'Registruj se' : "Login"} onClickFunction={(e) => send(e)} type='submit' disabled={disabled} />
 
             <div className="form-footer">
               <p>

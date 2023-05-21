@@ -373,70 +373,6 @@
   justify-content: space-around;
 }
 
-#logIn {
-  height: 100vh;
-  min-height: 100vh;
-  background-image: url("./Img/background-log-in-mini.webp");
-  background-size: cover;
-  background-position: center center;
-  background-color: rgba(0, 0, 0, 0.8);
-  background-blend-mode: darken;
-  padding-bottom: 1rem;
-  padding-top: 3rem;
-  color: #ffffdd;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#logIn .form {
-  border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.8666666667);
-  padding: 1rem;
-}
-#logIn .form > .form-header {
-  position: relative;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-#logIn .form > .form-header > svg:hover {
-  cursor: pointer;
-}
-#logIn .form > .form-header > .relative {
-  position: absolute;
-  top: -90%;
-  width: 100%;
-  display: flex;
-  flex-direction: row-reverse;
-}
-#logIn .form > .message-container {
-  padding-block: 1rem;
-}
-#logIn .form > .message-container > .api-message {
-  border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.8666666667);
-  margin: 0 auto;
-  color: #ffffdd;
-  font-size: 0.8rem;
-  border: 1px solid #fec400;
-  padding: 0.3rem;
-  text-align: center;
-  box-shadow: 0 0 10px rgb(223, 69, 84);
-}
-#logIn .form > .form-footer {
-  padding: 1rem;
-  border-top: 1px solid #9c9c9c;
-  color: #ffffdd;
-  font-family: "Nunito Sans", sans-serif;
-  font-size: 1.3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#logIn .form > .form-footer > p > span > a {
-  color: #fec400;
-}
-
 .submit {
   width: -moz-max-content;
   width: max-content;
@@ -577,6 +513,70 @@
 }
 .show-label {
   animation: show 1000ms ease forwards;
+}
+
+#logIn {
+  height: 100vh;
+  min-height: 100vh;
+  background-image: url("./Img/background-log-in-mini.webp");
+  background-size: cover;
+  background-position: center center;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-blend-mode: darken;
+  padding-bottom: 1rem;
+  padding-top: 3rem;
+  color: #ffffdd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#logIn .form {
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.8666666667);
+  padding: 1rem;
+}
+#logIn .form > .form-header {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#logIn .form > .form-header > svg:hover {
+  cursor: pointer;
+}
+#logIn .form > .form-header > .relative {
+  position: absolute;
+  top: -90%;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+#logIn .form > .message-container {
+  padding-block: 1rem;
+}
+#logIn .form > .message-container > .api-message {
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.8666666667);
+  margin: 0 auto;
+  color: #ffffdd;
+  font-size: 0.8rem;
+  border: 1px solid #fec400;
+  padding: 0.3rem;
+  text-align: center;
+  box-shadow: 0 0 10px rgb(223, 69, 84);
+}
+#logIn .form > .form-footer {
+  padding: 1rem;
+  border-top: 1px solid #9c9c9c;
+  color: #ffffdd;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#logIn .form > .form-footer > p > span > a {
+  color: #fec400;
 }
 
 #left-container > h3 {
