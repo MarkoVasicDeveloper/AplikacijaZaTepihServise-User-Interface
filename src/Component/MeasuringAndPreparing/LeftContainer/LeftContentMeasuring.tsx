@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import DatePicker from "react-date-picker";
 
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { selectClient } from "../../../redux/client/clientSlice";
+import { resetClient, selectClient } from "../../../redux/client/clientSlice";
 import { selectReceptionForPay } from "../../../redux/reception/receptionSlice";
 
 import { useInputText } from "../../../hooks/useInputText";
@@ -11,8 +11,10 @@ import { useCurrentReception } from "../../../hooks/useCurrentReception";
 
 import { Input } from "../../layout/input/input";
 import { Button } from "../../layout/button/button";
+import { useAppDispatch } from "../../../hooks/useAppDispatch";
 
 export default function LeftContentMeasuring() {
+  const dispatch = useAppDispatch();
   const client = useTypedSelector(selectClient);
   const forPay = useTypedSelector(selectReceptionForPay);
 
@@ -23,6 +25,9 @@ export default function LeftContentMeasuring() {
   const labels = ['Ime: ', 'Prezime: ', 'Adresa: ', 'Telefon: ', 'Broj tepiha: ', 'Broj staza: ', 'Vreme prijema: ', 'Radnik: ', 'Napomena: '];
   const displayData = [client.name, client.surname, client.address, client.phone, client.numberOfCarpets, client.numberOfTracks, client.timeAt, worker, client.note];
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { dispatch(resetClient()) }, []);
+  
   return (
     <section id="leftContentMeasuring" className="col-12-sm col-8-md col-5-xl section-part">
       <div className="carpetId">
@@ -38,7 +43,7 @@ export default function LeftContentMeasuring() {
             displayData.map((data, index) => (
               <div key={index} className="information col-12-xs col-5-sm col-5-md col-4-xl">
                 <span>{labels[index]}</span>
-                <span>{index === 6 && data === 'string' ? data.slice(0, -5).replace("T", " ") : data}</span>
+                <span>{index === 6 && typeof data === 'string' ? data.slice(0, -5).replace("T", " ") : data}</span>
               </div>
             ))
           }

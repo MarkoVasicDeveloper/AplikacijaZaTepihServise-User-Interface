@@ -24,11 +24,15 @@ export const clientSlice = createSlice({
     setClient (state, action) {
       state = { ...state, ...action.payload };
       return state;
+    },
+    resetClient (state) {
+      state = initialState;
+      return state;
     }
   }
 });
 
-export const { setClient } = clientSlice.actions;
+export const { setClient, resetClient } = clientSlice.actions;
 
 export default clientSlice.reducer;
 

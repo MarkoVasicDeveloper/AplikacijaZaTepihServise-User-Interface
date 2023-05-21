@@ -12,7 +12,7 @@ export default function RightContentMeasuring() {
           ? new Array(reception.show).fill(0).map((_: any, index: number) => (
               <Carpet key={index} reception={reception} index={index} />
             ))
-          : <h2>{!reception.show ? 'Ovde ce biti prikazani tepisi!' : 'Tepisi pripremljeni!'}</h2>}
+          : <h2>Tepisi pripremljeni!</h2>}
       </div>
     </section>
   );

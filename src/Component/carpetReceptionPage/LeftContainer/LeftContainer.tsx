@@ -10,7 +10,6 @@ import { Textarea } from "../../layout/textarea/textarea";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { useInputText } from "../../../hooks/useInputText";
 import { useAddClient } from "../../../hooks/useAddClient";
-import { useAddReception } from "../../../hooks/useAddReception";
 import { useReceptionNumber } from "../../../hooks/useReceptionNumber";
 
 export default function LeftContainer() {
@@ -23,7 +22,6 @@ export default function LeftContainer() {
 
   useReceptionNumber();
   const addClient = useAddClient();
-  useAddReception(data);
 
   useEffect(() => { if (!userLogIn) navigator("/") }, [navigator, userLogIn]);
 

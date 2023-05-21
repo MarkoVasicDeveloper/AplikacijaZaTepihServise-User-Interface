@@ -654,9 +654,6 @@
   font-size: 1.3rem;
 }
 #leftContentMeasuring .date {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
   margin-block: 1rem;
 }
 #leftContentMeasuring .date .react-date-picker button svg {
@@ -999,6 +996,7 @@ h1, h2 {
   font-weight: 600;
   border-bottom: 1px solid #793ea5;
   border-radius: 10px;
+  margin-bottom: 0.3rem;
 }
 .information > :first-child {
   display: block;

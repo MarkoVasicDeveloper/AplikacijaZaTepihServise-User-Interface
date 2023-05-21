@@ -29,7 +29,14 @@ export function useCurrentReception ()
         return dispatch(setReception({ show: 0 }));
 
         dispatch(setClient(
-          { ...currentReception.data.clients, 
+          { 
+            clientId: currentReception.data.clients.clientsId,
+            name: currentReception.data.clients.name,
+            surname: currentReception.data.clients.surname,
+            address: currentReception.data.clients.address,
+            phone: currentReception.data.phone,
+            note: currentReception.data.note,
+            timeAt: currentReception.data.timeAt,
             numberOfCarpets: currentReception.data.numberOfCarpet,
             numberOfTracks: currentReception.data.numberOfTracks
           }));
