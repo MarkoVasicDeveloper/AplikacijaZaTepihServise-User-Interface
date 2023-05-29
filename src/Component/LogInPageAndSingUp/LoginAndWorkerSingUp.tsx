@@ -22,7 +22,7 @@ export default function LoginAndWorkerSingUp({ workerLogIn, workerSingUp }: Logi
   const { data, edit } = useInputText({});
   const { sendData, message } = useLoginCheck(data);
   const { sendWorkerData, logMessage } = useWorkerLoginCheck(data);
-  const { addWorker } = useWorkerSingUp();
+  const { addWorker, addErrorMessage } = useWorkerSingUp();
 
   const [disabled, setDisabled] = useState(true);
 
@@ -65,17 +65,18 @@ export default function LoginAndWorkerSingUp({ workerLogIn, workerSingUp }: Logi
             <Input icon={faKey} onChangeInput={edit} name={"password"} placeholder="Password" id={"password"} type="password" cleanUp={workerLogIn} required />
 
             <div className="message-container">
-              <p className={message ? "api-message" : ''}> {message} </p>
+              <p className={message ? "api-message" : ''}> {message || addErrorMessage} </p>
               <p className={logMessage ? "api-message" : ''}> {logMessage} </p>
             </div>
 
-            <Button title={workerSingUp ? 'Registruj se' : "Login"} onClickFunction={(e) => send(e)} type='submit' disabled={disabled} />
+            <Button title={workerSingUp ? 'Registruj radnika' : "Login"} onClickFunction={(e) => send(e)} type='submit' disabled={disabled} />
 
             <div className="form-footer">
               <p>
                 Nemate nalog? &nbsp;
                 <span>
-                  <Link to={workerLogIn ? "/workersingup" : "/singup"}>Sing Up</Link>
+                  <Link to={workerLogIn ? "/workersingup" : "/singup"}>
+                    {workerLogIn ? 'Registruj radnika' : 'Registruj se'}</Link>
                 </span>
               </p>
             </div>

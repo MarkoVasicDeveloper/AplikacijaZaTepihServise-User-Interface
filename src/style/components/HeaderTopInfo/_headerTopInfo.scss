@@ -2,7 +2,7 @@
   min-height: 3rem;
   border-bottom: 1px solid #ffffff55;
   @include flex(space-between);
-  padding-inline: $base-padding * 0.2;
+  padding-inline: $base-padding * 0.9;
 
   & .washer-logo {
     font-size: $md-fontSize;

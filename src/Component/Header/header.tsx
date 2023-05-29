@@ -13,7 +13,7 @@ export default function Header(): JSX.Element {
   const [showMobileNav, setShowMobileNav] = useState(false);
 
   return (
-    <>
+    <header>
       <div className="holder">
         <nav className="large-screen">
           <ul>
@@ -47,6 +47,6 @@ export default function Header(): JSX.Element {
           </nav>
         </div>
       </Modal>
-    </>
+    </header>
   );
 }

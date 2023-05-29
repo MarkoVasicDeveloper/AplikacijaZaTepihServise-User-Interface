@@ -34,7 +34,7 @@ export function useCurrentReception ()
             name: currentReception.data.clients.name,
             surname: currentReception.data.clients.surname,
             address: currentReception.data.clients.address,
-            phone: currentReception.data.phone,
+            phone: currentReception.data.clients.phone,
             note: currentReception.data.note,
             timeAt: currentReception.data.timeAt,
             numberOfCarpets: currentReception.data.numberOfCarpet,

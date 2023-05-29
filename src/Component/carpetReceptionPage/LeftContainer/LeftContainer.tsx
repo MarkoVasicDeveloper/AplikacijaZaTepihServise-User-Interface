@@ -11,8 +11,11 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { useInputText } from "../../../hooks/useInputText";
 import { useAddClient } from "../../../hooks/useAddClient";
 import { useReceptionNumber } from "../../../hooks/useReceptionNumber";
+import { useAppDispatch } from "../../../hooks/useAppDispatch";
+import { resetClient } from "../../../redux/client/clientSlice";
 
 export default function LeftContainer() {
+  const dispatch = useAppDispatch();
   const userLogIn = useTypedSelector(selectLogIn);
 
   const navigator = useNavigate();
@@ -23,7 +26,11 @@ export default function LeftContainer() {
   useReceptionNumber();
   const addClient = useAddClient();
 
-  useEffect(() => { if (!userLogIn) navigator("/") }, [navigator, userLogIn]);
+  useEffect(() => {
+    if (!userLogIn) navigator("/");
+    dispatch(resetClient());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userLogIn]);
 
   return (
     <section id="left-container" className="col-12-sm col-8-md col-5-xl section-part">
@@ -35,7 +42,7 @@ export default function LeftContainer() {
         </div>
         <div>
           <Input onChangeInput={edit} name='address' id='address' placeholder="Adresa" label="Adresa" cleanUp={clean} required />
-          <Input onChangeInput={edit} name='phone' id='phone' placeholder="Telefon" label="Telefon" cleanUp={clean} />
+          <Input type="phone" onChangeInput={edit} name='phone' id='phone' placeholder="Telefon" label="Telefon" cleanUp={clean} required />
         </div>
       </div>
 
@@ -43,10 +50,10 @@ export default function LeftContainer() {
 
       <div className="input-group">
         <div>
-          <Input onChangeInput={edit} name='carpets' id='carpets' placeholder="Broj tepiha" label="Broj tepiha" cleanUp={clean} />
+          <Input type="number" onChangeInput={edit} name='carpets' id='carpets' placeholder="Broj tepiha" label="Broj tepiha" cleanUp={clean} />
         </div>
         <div>
-          <Input onChangeInput={edit} name='tracks' id='tracks' placeholder="Broj staza" label="Broj staza" cleanUp={clean} />
+          <Input type="number" onChangeInput={edit} name='tracks' id='tracks' placeholder="Broj staza" label="Broj staza" cleanUp={clean} />
         </div>
       </div>
 

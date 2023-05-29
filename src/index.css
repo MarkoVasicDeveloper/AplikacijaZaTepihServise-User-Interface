@@ -515,8 +515,8 @@
   animation: show 1000ms ease forwards;
 }
 
-#logIn {
-  height: 100vh;
+#logIn, #singUp {
+  min-height: 100vh;
   min-height: 100vh;
   background-image: url("./Img/background-log-in-mini.webp");
   background-size: cover;
@@ -530,31 +530,31 @@
   justify-content: center;
   align-items: center;
 }
-#logIn .form {
+#logIn .form, #singUp .form {
   border-radius: 20px;
   background-color: rgba(0, 0, 0, 0.8666666667);
   padding: 1rem;
 }
-#logIn .form > .form-header {
+#logIn .form > .form-header, #singUp .form > .form-header {
   position: relative;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-#logIn .form > .form-header > svg:hover {
+#logIn .form > .form-header > svg:hover, #singUp .form > .form-header > svg:hover {
   cursor: pointer;
 }
-#logIn .form > .form-header > .relative {
+#logIn .form > .form-header > .relative, #singUp .form > .form-header > .relative {
   position: absolute;
   top: -90%;
   width: 100%;
   display: flex;
   flex-direction: row-reverse;
 }
-#logIn .form > .message-container {
+#logIn .form > .message-container, #singUp .form > .message-container {
   padding-block: 1rem;
 }
-#logIn .form > .message-container > .api-message {
+#logIn .form > .message-container > .api-message, #singUp .form > .message-container > .api-message {
   border-radius: 20px;
   background-color: rgba(0, 0, 0, 0.8666666667);
   margin: 0 auto;
@@ -565,7 +565,7 @@
   text-align: center;
   box-shadow: 0 0 10px rgb(223, 69, 84);
 }
-#logIn .form > .form-footer {
+#logIn .form > .form-footer, #singUp .form > .form-footer {
   padding: 1rem;
   border-top: 1px solid #9c9c9c;
   color: #ffffdd;
@@ -575,7 +575,7 @@
   justify-content: center;
   align-items: center;
 }
-#logIn .form > .form-footer > p > span > a {
+#logIn .form > .form-footer > p > span > a, #singUp .form > .form-footer > p > span > a {
   color: #fec400;
 }
 
@@ -914,7 +914,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: 0.2rem;
+  padding-inline: 0.9rem;
 }
 .header-reception .washer-logo {
   font-size: 1.3rem;

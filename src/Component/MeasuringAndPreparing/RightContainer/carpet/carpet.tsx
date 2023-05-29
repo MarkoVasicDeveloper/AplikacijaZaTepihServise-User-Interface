@@ -25,7 +25,7 @@ export function Carpet ({ reception, index }: CarpetProps) {
   useEffect(() => { setClear(prev => !prev) }, [reception.carpetReceptionUserId]);
   
   return (
-    <div key={index} className="carpetDiv col-12-xs col-8-sm col-8-md col-5-lg col-6-xl">
+    <div key={index} className="carpetDiv col-12-xs col-8-sm col-8-md col-5-lg col-8-xl">
       <h2>Tepih/Staza {index + 1}</h2>
       <Input type="number" onChangeInput={edit} name={`width-${index}`} id={`width-${index}`} label="Sirina" placeholder="Sirina" cleanUp={clear} />
       <Input type="number" onChangeInput={edit} name={`height-${index}`} id={`height-${index}`} label="Duzina" placeholder="Duzina" cleanUp={clear} />

@@ -36,7 +36,7 @@ export default function Scheduling() {
             <Input onChangeInput={edit} name="name" id="name" label="Ime:" placeholder="Ime" cleanUp={clear} required/>
             <Input onChangeInput={edit} name="surname" id="surname" label="Prezime:" placeholder="Prezime" cleanUp={clear} required/>
             <Input onChangeInput={edit} name="address" id="address" label="Adresa:" placeholder="Adresa" cleanUp={clear} required/>
-            <Input onChangeInput={edit} name="phone" id="phone" label="Telefon:" placeholder="Telefon" cleanUp={clear} />
+            <Input onChangeInput={edit} name="phone" id="phone" label="Telefon:" placeholder="Telefon" cleanUp={clear} required />
 
             <h3>Ostale informacije</h3>
             <Input onChangeInput={edit} name="email" id="email" label="Email:" placeholder="Email" cleanUp={clear} />

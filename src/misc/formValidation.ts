@@ -2,17 +2,25 @@ export function formValidation (value: string, field: string, dirty: boolean, re
   if (value.length === 0 && (required ?? false) && dirty) return new ValidationResponse(false, 'Ovo polje je obavezno!')
 
   if ((field === 'name' || field === 'surname') && (required ?? false)) {
-    if (value.length < 3) return new ValidationResponse(false, 'Korisnicko ime mora imati barem tri karaktera!')
+    if (value.length < 3) return new ValidationResponse(false, 'Minimum tri karaktera!')
 
-    if (value.length > 50) return new ValidationResponse(false, 'Korisnicko ime ne moze biti duze od 50 karaktera!')
+    if (value.length > 50) return new ValidationResponse(false, 'Ne vise od 50 karaktera!')
   }
 
   if (field === 'password' && (required ?? false)) {
-    if (value.length < 6) return new ValidationResponse(false, 'Lozinka mora imati barem sest karaktera!')
+    if (value.length < 6) return new ValidationResponse(false, 'Minimum sest karaktera!')
   }
 
   if (field === 'email' && (required ?? false)) {
-    if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value)) { return new ValidationResponse(false, 'Imejl nije validan!') }
+    if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+      return new ValidationResponse(false, 'Imejl nije validan!') 
+    }
+  }
+
+  if (field === 'phone' && (required ?? false)) {
+    if (!/^[0-9]+$/.test(value)) {
+      return new ValidationResponse(false, 'Broj telefona nije validan!') 
+    }
   }
 
   return { valid: true, value }

@@ -1,5 +1,5 @@
-#logIn {
-  height: 100vh;
+#logIn, #singUp {
+  min-height: 100vh;
   @include background('./Img/background-log-in-mini.webp');
   @include flex;
 
