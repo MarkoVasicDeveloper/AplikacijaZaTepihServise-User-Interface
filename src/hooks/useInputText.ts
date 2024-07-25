@@ -2,7 +2,8 @@ import { useState } from 'react'
 
 export function useInputText (initialValue: Record<string, any>): {
   data: Record<string, any>
-  edit: (event: React.ChangeEvent<HTMLInputElement> | any) => void
+  edit: (event: React.ChangeEvent<HTMLInputElement> | any) => void,
+  reset: () => void
 } {
   const [data, setData] = useState(initialValue);
 
@@ -15,5 +16,9 @@ export function useInputText (initialValue: Record<string, any>): {
     setData({ ...data, [event.target.name]: event.target.value })
   };
 
-  return { data, edit };
+  const reset = (): void => {
+    setData(initialValue);
+  };
+
+  return { data, edit, reset };
 }

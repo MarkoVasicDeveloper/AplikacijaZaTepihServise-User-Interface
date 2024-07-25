@@ -22,7 +22,10 @@ export function Carpet ({ reception, index }: CarpetProps) {
   const [clear, setClear] = useState(false);
   const [disabled, setDisabled] = useState(false);
 
-  useEffect(() => { setClear(prev => !prev) }, [reception.carpetReceptionUserId]);
+  useEffect(() => { 
+    setClear(prev => !prev);
+    setDisabled(false);
+   }, [reception.carpetReceptionUserId]);
   
   return (
     <div key={index} className="carpetDiv col-12-xs col-8-sm col-8-md col-5-lg col-8-xl">

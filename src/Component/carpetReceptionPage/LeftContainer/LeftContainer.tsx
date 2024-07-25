@@ -20,7 +20,7 @@ export default function LeftContainer() {
 
   const navigator = useNavigate();
 
-  const { data, edit } = useInputText({});
+  const { data, edit, reset } = useInputText({});
   const [clean, setClean] = useState(false);
 
   useReceptionNumber();
@@ -59,7 +59,11 @@ export default function LeftContainer() {
 
       <Textarea name='note' id='note' onChangeInput={edit} label='Napomena' placeholder="Napomena" cleanUp={clean} />
       <div className="sendButton">
-        <Button title={"Posalji..."} type="submit" onClickFunction={() => { addClient(data); setClean(!clean)}} />
+        <Button title={"Posalji..."} type="submit" onClickFunction={() => { 
+            addClient(data); 
+            setClean(!clean);
+            reset();
+          }} />
       </div>
     </section>
   );

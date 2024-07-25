@@ -21,7 +21,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/user-interface">
     <Provider store={setupStore(undefined)}>
       <Routes>
         <Route path="/" element={<LoginAndWorkerSingUp workerLogIn={false} />} />

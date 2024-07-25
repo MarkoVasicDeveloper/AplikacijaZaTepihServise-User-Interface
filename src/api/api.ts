@@ -10,7 +10,7 @@ export default function api(
     const requestData = {
       method: method,
       url: path,
-      baseURL: "http://localhost:8080",
+      baseURL: "https://washersoftware.com",
       data: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
@@ -122,7 +122,7 @@ async function refreshToken(
   const refreshTokenRequestData: AxiosRequestConfig = {
     method: "post",
     url: path,
-    baseURL: "http://localhost:8080",
+    baseURL: "https://washersoftware.com",
     data: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
